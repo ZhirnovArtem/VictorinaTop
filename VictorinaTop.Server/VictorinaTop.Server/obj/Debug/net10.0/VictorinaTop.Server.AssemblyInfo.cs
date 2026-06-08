@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("VictorinaTop.Server")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8b1f288093252682a0f73fdb11f45a3965f8c910")]
 [assembly: System.Reflection.AssemblyProductAttribute("VictorinaTop.Server")]
 [assembly: System.Reflection.AssemblyTitleAttribute("VictorinaTop.Server")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
