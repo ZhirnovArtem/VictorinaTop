@@ -1,1 +1,232 @@
-{\rtf1}
+using System.Net.Http.Json;
+using VictorinaTop.Mobile.Models;
+
+namespace VictorinaTop.Mobile.Services;
+
+public class ApiService
+{
+    private readonly HttpClient _http;
+    private readonly PreferencesService _prefs;
+
+    // Для Android эмулятора - 10.0.2.2
+    // Для Windows - localhost
+#if DEBUG
+#if ANDROID
+    private const string BaseUrl = "http://10.0.2.2:5000/api/";
+#else
+            private const string BaseUrl = "http://localhost:5000/api/";
+#endif
+#else
+        private const string BaseUrl = "https://your-server.com:5001/api/";
+#endif
+
+    public ApiService(PreferencesService prefs)
+    {
+        _prefs = prefs;
+
+        var handler = new HttpClientHandler();
+#if DEBUG
+        handler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => true;
+#endif
+
+        _http = new HttpClient(handler);
+        _http.BaseAddress = new Uri(BaseUrl);
+        _http.Timeout = TimeSpan.FromSeconds(30);
+        _http.DefaultRequestHeaders.Accept.Add(
+            new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+
+        Task.Run(async () => await LoadToken());
+    }
+
+    private async Task LoadToken()
+    {
+        var token = await _prefs.GetToken();
+        if (!string.IsNullOrEmpty(token))
+        {
+            _http.DefaultRequestHeaders.Authorization =
+                new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+        }
+    }
+
+
+    public async Task<(bool success, string error, bool requiresVerification)>
+        Register(string login, string email, string password)
+    {
+        try
+        {
+            var response = await _http.PostAsJsonAsync("auth/register", new { login, email, password });
+            var result = await response.Content.ReadFromJsonAsync<RegisterResponse>();
+            return (result?.success == true, result?.error ?? "", result?.requiresVerification == true);
+        }
+        catch (Exception ex)
+        {
+            return (false, ex.Message, false);
+        }
+    }
+
+    public async Task<(bool success, string token, string login, int maxScore)>
+        Verify(string email, string code)
+    {
+        try
+        {
+            var response = await _http.PostAsJsonAsync("auth/verify", new { email, code, type = "register" });
+            var result = await response.Content.ReadFromJsonAsync<VerifyResponse>();
+
+            if (result?.success == true && result.token != null)
+            {
+                await _prefs.SaveToken(result.token);
+                await _prefs.SetUserLogin(result.login);
+                _http.DefaultRequestHeaders.Authorization =
+                    new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", result.token);
+                return (true, result.token, result.login, result.maxScore);
+            }
+            return (false, "", "", 0);
+        }
+        catch
+        {
+            return (false, "", "", 0);
+        }
+    }
+
+    public async Task<(bool success, string token, string login, int maxScore)>
+        Login(string loginOrEmail, string password)
+    {
+        try
+        {
+            var response = await _http.PostAsJsonAsync("auth/login", new { loginOrEmail, password });
+            var result = await response.Content.ReadFromJsonAsync<LoginResponse>();
+
+            if (result?.success == true && result.token != null)
+            {
+                await _prefs.SaveToken(result.token);
+                await _prefs.SetUserLogin(result.login);
+                _http.DefaultRequestHeaders.Authorization =
+                    new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", result.token);
+                return (true, result.token, result.login, result.maxScore);
+            }
+            return (false, "", "", 0);
+        }
+        catch
+        {
+            return (false, "", "", 0);
+        }
+    }
+
+    public async Task Logout()
+    {
+        await _prefs.ClearAll();
+        _http.DefaultRequestHeaders.Authorization = null;
+    }
+
+
+    public async Task<List<Theme>> GetThemes()
+    {
+        try
+        {
+            return await _http.GetFromJsonAsync<List<Theme>>("themes") ?? new List<Theme>();
+        }
+        catch
+        {
+            return new List<Theme>();
+        }
+    }
+
+    public async Task<List<Question>> GetQuestions(int themeId)
+    {
+        try
+        {
+            return await _http.GetFromJsonAsync<List<Question>>($"themes/{themeId}/questions") ?? new List<Question>();
+        }
+        catch
+        {
+            return new List<Question>();
+        }
+    }
+
+    public async Task<bool> CreateTheme(string name)
+    {
+        try
+        {
+            var response = await _http.PostAsJsonAsync("themes", new { name });
+            return response.IsSuccessStatusCode;
+        }
+        catch
+        {
+            return false;
+        }
+    }
+
+    public async Task<bool> AddQuestion(int themeId, Question question)
+    {
+        try
+        {
+            var request = new
+            {
+                themeId,
+                question.Text,
+                question.Status,
+                question.CorrectAnswer,
+                question.OptionA,
+                question.OptionB,
+                question.OptionC,
+                question.OptionD
+            };
+            var response = await _http.PostAsJsonAsync("questions", request);
+            return response.IsSuccessStatusCode;
+        }
+        catch
+        {
+            return false;
+        }
+    }
+
+    public async Task<bool> SubmitScore(int themeId, int points)
+    {
+        try
+        {
+            var response = await _http.PostAsJsonAsync("scores", new { themeId, points });
+            return response.IsSuccessStatusCode;
+        }
+        catch
+        {
+            return false;
+        }
+    }
+
+    public async Task<List<User>> GetLeaderboard(int limit = 10)
+    {
+        try
+        {
+            return await _http.GetFromJsonAsync<List<User>>($"scores/leaderboard?limit={limit}") ?? new List<User>();
+        }
+        catch
+        {
+            return new List<User>();
+        }
+    }
+
+
+    private class RegisterResponse
+    {
+        public bool success { get; set; }
+        public string? error { get; set; }
+        public bool requiresVerification { get; set; }
+    }
+
+    private class VerifyResponse
+    {
+        public bool success { get; set; }
+        public string? token { get; set; }
+        public string? login { get; set; }
+        public int maxScore { get; set; }
+    }
+
+    private class LoginResponse
+    {
+        public bool success { get; set; }
+        public string? token { get; set; }
+        public string? login { get; set; }
+        public int maxScore { get; set; }
+        public string? error { get; set; }
+    }
+}

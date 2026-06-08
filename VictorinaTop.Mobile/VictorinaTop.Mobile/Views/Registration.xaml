@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="VictorinaTop.Mobile.Views.RegistrationPage"
+             BackgroundColor="#1A1A2E"
+             NavigationPage.HasBackButton="False">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackLayout Grid.Row="0"
+                     Orientation="Horizontal"
+                     BackgroundColor="#16213E"
+                     Padding="15">
+            <Button Text="← Назад"
+                    Clicked="OnBackClicked"
+                    BackgroundColor="#E74C3C"
+                    TextColor="White"
+                    CornerRadius="10"
+                    WidthRequest="80"
+                    HeightRequest="40"/>
+            <Label Text="Регистрация"
+                   FontSize="18"
+                   FontAttributes="Bold"
+                   TextColor="#FFD700"
+                   HorizontalOptions="CenterAndExpand"
+                   VerticalOptions="Center"/>
+        </StackLayout>
+
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout Spacing="15" Padding="30" VerticalOptions="Center">
+
+                <Label Text="📝 Создание аккаунта"
+                       FontSize="28"
+                       FontAttributes="Bold"
+                       TextColor="#FFD700"
+                       HorizontalOptions="Center"
+                       Margin="0,0,0,30"/>
+
+                <Entry x:Name="LoginEntry"
+                       Placeholder="Логин"
+                       BackgroundColor="#2D2D44"
+                       TextColor="White"
+                       HeightRequest="55"
+                       FontSize="16"/>
+
+                <Entry x:Name="EmailEntry"
+                       Placeholder="Email"
+                       Keyboard="Email"
+                       BackgroundColor="#2D2D44"
+                       TextColor="White"
+                       HeightRequest="55"
+                       FontSize="16"/>
+
+                <Entry x:Name="PasswordEntry"
+                       Placeholder="Пароль (мин. 4 символа)"
+                       BackgroundColor="#2D2D44"
+                       TextColor="White"
+                       IsPassword="True"
+                       HeightRequest="55"
+                       FontSize="16"/>
+
+                <Button Text="📧 Зарегистрироваться"
+                        Clicked="OnRegisterClicked"
+                        BackgroundColor="#50C878"
+                        TextColor="White"
+                        FontSize="18"
+                        FontAttributes="Bold"
+                        CornerRadius="15"
+                        HeightRequest="55"
+                        Margin="0,20,0,0"/>
+
+                <Label x:Name="ErrorLabel"
+                       Text=""
+                       TextColor="#FF6B6B"
+                       HorizontalOptions="Center"
+                       IsVisible="False"/>
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>

@@ -1,1 +1,135 @@
-{\rtf1}
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="VictorinaTop.Mobile.Views.MenuPage"
+             Title="Главное меню"
+             BackgroundColor="#1A1A2E">
+
+    <Grid RowDefinitions="Auto,Auto,*">
+        <Border Grid.Row="0"
+                BackgroundColor="#16213E"
+                Margin="15"
+                Padding="15"
+                StrokeShape="RoundRectangle 15">
+            <VerticalStackLayout>
+                <Label Text="🏆 ТОП-3 ИГРОКОВ 🏆"
+                       FontSize="18"
+                       FontAttributes="Bold"
+                       TextColor="#FFD700"
+                       HorizontalOptions="Center"/>
+                <BoxView HeightRequest="2" BackgroundColor="#FFD700" Margin="0,10"/>
+
+                <CollectionView x:Name="TopPlayersList" HeightRequest="150">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Padding="10,5">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Text="{Binding Id}" TextColor="#FFD700" FontSize="14"/>
+                                <Label Grid.Column="1" Text="{Binding Login}" TextColor="White" Margin="10,0" FontSize="14"/>
+                                <Label Grid.Column="2" Text="{Binding MaxScore}" TextColor="#50C878" FontSize="14"/>
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </VerticalStackLayout>
+        </Border>
+
+        <Border Grid.Row="1"
+                BackgroundColor="#16213E"
+                Margin="15,0,15,15"
+                Padding="15"
+                StrokeShape="RoundRectangle 15">
+            <VerticalStackLayout>
+                <Label Text="🎮 ВИКТОРИНЫ 🎮"
+                       FontSize="16"
+                       FontAttributes="Bold"
+                       TextColor="#FFD700"
+                       HorizontalOptions="Center"/>
+                <BoxView HeightRequest="2" BackgroundColor="#FFD700" Margin="0,10"/>
+
+                <CollectionView x:Name="ThemesList"
+                               SelectionMode="Single"
+                               SelectionChanged="OnThemeSelected">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Border BackgroundColor="#2D2D44"
+                                    StrokeThickness="0"
+                                    Margin="0,5"
+                                    Padding="10,5"
+                                    StrokeShape="RoundRectangle 10">
+                                <Grid ColumnSpacing="10">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Label Grid.Column="0" 
+                                           Text="📚" 
+                                           FontSize="20" 
+                                           VerticalOptions="Center"/>
+
+                                    <VerticalStackLayout Grid.Column="1" Margin="10,0">
+                                        <Label Text="{Binding Name}" 
+                                               TextColor="White" 
+                                               FontSize="16"
+                                               FontAttributes="Bold"/>
+                                        <Label Text="{Binding AuthorDisplay}" 
+                                               TextColor="#888888" 
+                                               FontSize="12"/>
+                                    </VerticalStackLayout>
+
+                                    <Button Grid.Column="2"
+                                            Text="Играть"
+                                            BackgroundColor="#4A90E2"
+                                            TextColor="White"
+                                            CornerRadius="10"
+                                            WidthRequest="70"
+                                            HeightRequest="35"/>
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+                <Label x:Name="EmptyLabel"
+                       Text="Нет доступных викторин"
+                       TextColor="#888888"
+                       HorizontalOptions="Center"
+                       Margin="0,20"
+                       IsVisible="False"/>
+            </VerticalStackLayout>
+        </Border>
+
+        <VerticalStackLayout Grid.Row="2"
+                            Spacing="15"
+                            Padding="30"
+                            VerticalOptions="End"
+                            Margin="0,0,0,20">
+
+            <Button Text="✏️ Создать викторину"
+                    x:Name="CreateBtn"
+                    Clicked="OnCreateClicked"
+                    BackgroundColor="#9B59B6"
+                    TextColor="White"
+                    FontSize="16"
+                    FontAttributes="Bold"
+                    CornerRadius="15"
+                    HeightRequest="50"/>
+
+            <Button Text="🚪 Выйти"
+                    x:Name="LogoutBtn"
+                    Clicked="OnLogoutClicked"
+                    BackgroundColor="#E74C3C"
+                    TextColor="White"
+                    FontSize="16"
+                    FontAttributes="Bold"
+                    CornerRadius="15"
+                    HeightRequest="50"/>
+        </VerticalStackLayout>
+    </Grid>
+</ContentPage>

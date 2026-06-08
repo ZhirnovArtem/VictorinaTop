@@ -11,10 +11,14 @@
 using System;
 using System.Reflection;
 
+[assembly: System.Reflection.AssemblyMetadataAttribute("Microsoft.Maui.ApplicationModel.AppInfo.PackageName", "com.companyname.victorinatop.mobile")]
+[assembly: System.Reflection.AssemblyMetadataAttribute("Microsoft.Maui.ApplicationModel.AppInfo.PublisherName", "User Name")]
+[assembly: System.Reflection.AssemblyMetadataAttribute("Microsoft.Maui.ApplicationModel.AppInfo.Name", "VictorinaTop.Mobile")]
+[assembly: System.Reflection.AssemblyMetadataAttribute("Microsoft.Maui.ApplicationModel.AppInfo.Version", "1.0.0.1")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("VictorinaTop.Mobile")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+37a3f3ae91754ea9194dd732a9205100161ea3ef")]
 [assembly: System.Reflection.AssemblyProductAttribute("VictorinaTop.Mobile")]
 [assembly: System.Reflection.AssemblyTitleAttribute("VictorinaTop.Mobile")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

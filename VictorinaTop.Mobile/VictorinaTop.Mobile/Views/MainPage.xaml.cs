@@ -1,24 +1,21 @@
-﻿namespace VictorinaTop.Mobile
+﻿using VictorinaTop.Mobile.Views;
+
+namespace VictorinaTop.Mobile.Views;
+
+public partial class MainPage : ContentPage
 {
-    public partial class MainPage : ContentPage
+    public MainPage()
     {
-        int count = 0;
+        InitializeComponent();
+    }
 
-        public MainPage()
-        {
-            InitializeComponent();
-        }
+    private async void OnLoginClicked(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new EnteringPage());
+    }
 
-        private void OnCounterClicked(object? sender, EventArgs e)
-        {
-            count++;
-
-            if (count == 1)
-                CounterBtn.Text = $"Clicked {count} time";
-            else
-                CounterBtn.Text = $"Clicked {count} times";
-
-            SemanticScreenReader.Announce(CounterBtn.Text);
-        }
+    private async void OnRegisterClicked(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new RegistrationPage());
     }
 }

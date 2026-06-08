@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="VictorinaTop.Mobile.Views.GamePage"
+             Title="Викторина"
+             BackgroundColor="#1A1A2E">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackLayout Grid.Row="0"
+                     Orientation="Horizontal"
+                     BackgroundColor="#16213E"
+                     Padding="20,15">
+            <Label x:Name="CounterLabel"
+                   Text="Вопрос 1"
+                   FontSize="16"
+                   TextColor="White"
+                   VerticalOptions="Center"/>
+            <Label x:Name="ScoreLabel"
+                   Text="Счёт: 0"
+                   FontSize="20"
+                   FontAttributes="Bold"
+                   TextColor="#FFD700"
+                   HorizontalOptions="EndAndExpand"
+                   VerticalOptions="Center"/>
+        </StackLayout>
+
+        <VerticalStackLayout Grid.Row="1"
+                            Spacing="20"
+                            Padding="20"
+                            VerticalOptions="Center">
+
+            <Border BackgroundColor="#16213E"
+                    StrokeThickness="0"
+                    Padding="20"
+                    StrokeShape="RoundRectangle 15">
+                <Label x:Name="QuestionLabel"
+                       Text=""
+                       FontSize="22"
+                       FontAttributes="Bold"
+                       TextColor="White"
+                       HorizontalOptions="Center"
+                       HorizontalTextAlignment="Center"/>
+            </Border>
+
+            <Button x:Name="BtnA"
+                    Clicked="OnAnswerClicked"
+                    BackgroundColor="#2D2D44"
+                    TextColor="White"
+                    FontSize="16"
+                    CornerRadius="12"
+                    HeightRequest="55"/>
+
+            <Button x:Name="BtnB"
+                    Clicked="OnAnswerClicked"
+                    BackgroundColor="#2D2D44"
+                    TextColor="White"
+                    FontSize="16"
+                    CornerRadius="12"
+                    HeightRequest="55"/>
+
+            <Button x:Name="BtnC"
+                    Clicked="OnAnswerClicked"
+                    BackgroundColor="#2D2D44"
+                    TextColor="White"
+                    FontSize="16"
+                    CornerRadius="12"
+                    HeightRequest="55"/>
+
+            <Button x:Name="BtnD"
+                    Clicked="OnAnswerClicked"
+                    BackgroundColor="#2D2D44"
+                    TextColor="White"
+                    FontSize="16"
+                    CornerRadius="12"
+                    HeightRequest="55"/>
+        </VerticalStackLayout>
+
+        <Border x:Name="GameOverPanel"
+                IsVisible="False"
+                BackgroundColor="#CC000000">
+            <VerticalStackLayout VerticalOptions="Center"
+                                Spacing="20"
+                                Padding="30">
+                <Label Text="🏆 ИГРА ОКОНЧЕНА 🏆"
+                       FontSize="28"
+                       FontAttributes="Bold"
+                       TextColor="#FFD700"
+                       HorizontalOptions="Center"/>
+                <Label x:Name="FinalScoreLabel"
+                       FontSize="24"
+                       FontAttributes="Bold"
+                       TextColor="#50C878"
+                       HorizontalOptions="Center"/>
+                <Button Text="В меню"
+                        Clicked="OnMenuClicked"
+                        BackgroundColor="#4A90E2"
+                        CornerRadius="15"
+                        HeightRequest="50"/>
+            </VerticalStackLayout>
+        </Border>
+    </Grid>
+</ContentPage>

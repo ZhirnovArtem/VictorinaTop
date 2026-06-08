@@ -1,17 +1,31 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using VictorinaTop.Mobile.Services;
+using VictorinaTop.Mobile.Views;
 
-namespace VictorinaTop.Mobile
+namespace VictorinaTop.Mobile;
+
+public partial class App : Application
 {
-    public partial class App : Application
-    {
-        public App()
-        {
-            InitializeComponent();
-        }
+    private readonly PreferencesService _prefs;
 
-        protected override Window CreateWindow(IActivationState? activationState)
+    public App(PreferencesService prefs)
+    {
+        InitializeComponent();
+        _prefs = prefs;
+    }
+
+    protected override async void OnStart()
+    {
+        base.OnStart();
+
+        var token = await _prefs.GetToken();
+
+        if (!string.IsNullOrEmpty(token))
         {
-            return new Window(new AppShell());
+            MainPage = new NavigationPage(new MenuPage());
+        }
+        else
+        {
+            MainPage = new NavigationPage(new MainPage());
         }
     }
 }
