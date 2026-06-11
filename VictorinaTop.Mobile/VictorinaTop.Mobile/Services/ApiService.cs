@@ -1,15 +1,11 @@
 using System.Net.Http.Json;
 using VictorinaTop.Mobile.Models;
-
 namespace VictorinaTop.Mobile.Services;
 
 public class ApiService
 {
     private readonly HttpClient _http;
     private readonly PreferencesService _prefs;
-
-    // Для Android эмулятора - 10.0.2.2
-    // Для Windows - localhost
 #if DEBUG
 #if ANDROID
     private const string BaseUrl = "http://10.0.2.2:5000/api/";
@@ -36,6 +32,25 @@ public class ApiService
             new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
 
         Task.Run(async () => await LoadToken());
+    }
+
+    public async Task<bool> TestConnection()
+    {
+        try
+        {
+            var response = await _http.GetAsync("health");
+            return response.IsSuccessStatusCode;
+        }
+        catch
+        {
+            return false;
+        }
+    }
+
+    public void SetAuthToken(string token)
+    {
+        _http.DefaultRequestHeaders.Authorization =
+            new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
     }
 
     private async Task LoadToken()

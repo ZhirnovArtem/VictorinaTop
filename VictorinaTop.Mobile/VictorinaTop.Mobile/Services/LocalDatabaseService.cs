@@ -9,7 +9,9 @@ public class LocalDatabaseService
 
     public LocalDatabaseService()
     {
-        _dbPath = Path.Combine(FileSystem.AppDataDirectory, "VictorinaTopCache.db");
+        var dbName = "VictorinaTopCache.db";
+        _dbPath = Path.Combine(FileSystem.AppDataDirectory, dbName);
+        System.Diagnostics.Debug.WriteLine($"DB Path: {_dbPath}");
         InitializeDatabase();
     }
 
@@ -86,7 +88,6 @@ public class LocalDatabaseService
         return themes;
     }
 
-    // Метод для кэширования вопросов
     public void CacheQuestions(int themeId, List<Question> questions)
     {
         using var connection = new SqliteConnection($"Data Source={_dbPath}");

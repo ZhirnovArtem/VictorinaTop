@@ -1,5 +1,5 @@
-﻿using VictorinaTop.Mobile.Services;
-
+﻿using Microsoft.Extensions.Logging;
+using VictorinaTop.Mobile.Services;
 namespace VictorinaTop.Mobile;
 
 public static class MauiProgram
@@ -19,6 +19,11 @@ public static class MauiProgram
         builder.Services.AddSingleton<LocalDatabaseService>();
         builder.Services.AddSingleton<PreferencesService>();
 
+#if DEBUG
+        builder.Logging.AddDebug();
+#endif
+
         return builder.Build();
     }
 }
+

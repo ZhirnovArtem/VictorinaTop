@@ -71,6 +71,14 @@
               "target": "Package",
               "version": "[10.0.8, )"
             },
+            "Microsoft.Extensions.Configuration.Abstractions": {
+              "target": "Package",
+              "version": "[10.0.8, )"
+            },
+            "Microsoft.Extensions.Diagnostics": {
+              "target": "Package",
+              "version": "[10.0.8, )"
+            },
             "Snail.Toolkit.Authentication.JwtBearer": {
               "target": "Package",
               "version": "[1.0.0, )"

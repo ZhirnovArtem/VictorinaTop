@@ -3,8 +3,72 @@
   "WorkspaceRootPath": "C:\\VictorinaTop\\VictorinaTop.Server\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{BEF95A7E-DE2B-4E28-8259-892B54E1D41C}|VictorinaTop.Server\\VictorinaTop.Server.csproj|c:\\victorinatop\\victorinatop.server\\victorinatop.server\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BEF95A7E-DE2B-4E28-8259-892B54E1D41C}|VictorinaTop.Server\\VictorinaTop.Server.csproj|solutionrelative:victorinatop.server\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{67832E06-A11F-5E09-5B04-3B3DC1C39C5F}|VictorinaTop.Server\\VictorinaTop.Server.csproj|c:\\victorinatop\\victorinatop.server\\victorinatop.server\\services\\jwtservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{67832E06-A11F-5E09-5B04-3B3DC1C39C5F}|VictorinaTop.Server\\VictorinaTop.Server.csproj|solutionrelative:victorinatop.server\\services\\jwtservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{67832E06-A11F-5E09-5B04-3B3DC1C39C5F}|VictorinaTop.Server\\VictorinaTop.Server.csproj|c:\\victorinatop\\victorinatop.server\\victorinatop.server\\services\\verificationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{67832E06-A11F-5E09-5B04-3B3DC1C39C5F}|VictorinaTop.Server\\VictorinaTop.Server.csproj|solutionrelative:victorinatop.server\\services\\verificationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{67832E06-A11F-5E09-5B04-3B3DC1C39C5F}|VictorinaTop.Server\\VictorinaTop.Server.csproj|c:\\victorinatop\\victorinatop.server\\victorinatop.server\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{67832E06-A11F-5E09-5B04-3B3DC1C39C5F}|VictorinaTop.Server\\VictorinaTop.Server.csproj|solutionrelative:victorinatop.server\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{67832E06-A11F-5E09-5B04-3B3DC1C39C5F}|VictorinaTop.Server\\VictorinaTop.Server.csproj|c:\\victorinatop\\victorinatop.server\\victorinatop.server\\middleware\\errorhandlingmiddleware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{67832E06-A11F-5E09-5B04-3B3DC1C39C5F}|VictorinaTop.Server\\VictorinaTop.Server.csproj|solutionrelative:victorinatop.server\\middleware\\errorhandlingmiddleware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{67832E06-A11F-5E09-5B04-3B3DC1C39C5F}|VictorinaTop.Server\\VictorinaTop.Server.csproj|c:\\victorinatop\\victorinatop.server\\victorinatop.server\\services\\emailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{67832E06-A11F-5E09-5B04-3B3DC1C39C5F}|VictorinaTop.Server\\VictorinaTop.Server.csproj|solutionrelative:victorinatop.server\\services\\emailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{67832E06-A11F-5E09-5B04-3B3DC1C39C5F}|VictorinaTop.Server\\VictorinaTop.Server.csproj|c:\\victorinatop\\victorinatop.server\\victorinatop.server\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{67832E06-A11F-5E09-5B04-3B3DC1C39C5F}|VictorinaTop.Server\\VictorinaTop.Server.csproj|solutionrelative:victorinatop.server\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{67832E06-A11F-5E09-5B04-3B3DC1C39C5F}|VictorinaTop.Server\\VictorinaTop.Server.csproj|c:\\victorinatop\\victorinatop.server\\victorinatop.server\\services\\passwordhasher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{67832E06-A11F-5E09-5B04-3B3DC1C39C5F}|VictorinaTop.Server\\VictorinaTop.Server.csproj|solutionrelative:victorinatop.server\\services\\passwordhasher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{67832E06-A11F-5E09-5B04-3B3DC1C39C5F}|VictorinaTop.Server\\VictorinaTop.Server.csproj|c:\\victorinatop\\victorinatop.server\\victorinatop.server\\controllers\\scorescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{67832E06-A11F-5E09-5B04-3B3DC1C39C5F}|VictorinaTop.Server\\VictorinaTop.Server.csproj|solutionrelative:victorinatop.server\\controllers\\scorescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{67832E06-A11F-5E09-5B04-3B3DC1C39C5F}|VictorinaTop.Server\\VictorinaTop.Server.csproj|c:\\victorinatop\\victorinatop.server\\victorinatop.server\\controllers\\questionscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{67832E06-A11F-5E09-5B04-3B3DC1C39C5F}|VictorinaTop.Server\\VictorinaTop.Server.csproj|solutionrelative:victorinatop.server\\controllers\\questionscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{67832E06-A11F-5E09-5B04-3B3DC1C39C5F}|VictorinaTop.Server\\VictorinaTop.Server.csproj|c:\\victorinatop\\victorinatop.server\\victorinatop.server\\controllers\\themescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{67832E06-A11F-5E09-5B04-3B3DC1C39C5F}|VictorinaTop.Server\\VictorinaTop.Server.csproj|solutionrelative:victorinatop.server\\controllers\\themescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{67832E06-A11F-5E09-5B04-3B3DC1C39C5F}|VictorinaTop.Server\\VictorinaTop.Server.csproj|c:\\victorinatop\\victorinatop.server\\victorinatop.server\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{67832E06-A11F-5E09-5B04-3B3DC1C39C5F}|VictorinaTop.Server\\VictorinaTop.Server.csproj|solutionrelative:victorinatop.server\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{67832E06-A11F-5E09-5B04-3B3DC1C39C5F}|VictorinaTop.Server\\VictorinaTop.Server.csproj|c:\\victorinatop\\victorinatop.server\\victorinatop.server\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{67832E06-A11F-5E09-5B04-3B3DC1C39C5F}|VictorinaTop.Server\\VictorinaTop.Server.csproj|solutionrelative:victorinatop.server\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{67832E06-A11F-5E09-5B04-3B3DC1C39C5F}|VictorinaTop.Server\\VictorinaTop.Server.csproj|c:\\victorinatop\\victorinatop.server\\victorinatop.server\\models\\verificationcode.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{67832E06-A11F-5E09-5B04-3B3DC1C39C5F}|VictorinaTop.Server\\VictorinaTop.Server.csproj|solutionrelative:victorinatop.server\\models\\verificationcode.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{67832E06-A11F-5E09-5B04-3B3DC1C39C5F}|VictorinaTop.Server\\VictorinaTop.Server.csproj|c:\\victorinatop\\victorinatop.server\\victorinatop.server\\models\\score.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{67832E06-A11F-5E09-5B04-3B3DC1C39C5F}|VictorinaTop.Server\\VictorinaTop.Server.csproj|solutionrelative:victorinatop.server\\models\\score.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{67832E06-A11F-5E09-5B04-3B3DC1C39C5F}|VictorinaTop.Server\\VictorinaTop.Server.csproj|c:\\victorinatop\\victorinatop.server\\victorinatop.server\\models\\question.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{67832E06-A11F-5E09-5B04-3B3DC1C39C5F}|VictorinaTop.Server\\VictorinaTop.Server.csproj|solutionrelative:victorinatop.server\\models\\question.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{67832E06-A11F-5E09-5B04-3B3DC1C39C5F}|VictorinaTop.Server\\VictorinaTop.Server.csproj|c:\\victorinatop\\victorinatop.server\\victorinatop.server\\models\\theme.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{67832E06-A11F-5E09-5B04-3B3DC1C39C5F}|VictorinaTop.Server\\VictorinaTop.Server.csproj|solutionrelative:victorinatop.server\\models\\theme.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{67832E06-A11F-5E09-5B04-3B3DC1C39C5F}|VictorinaTop.Server\\VictorinaTop.Server.csproj|c:\\victorinatop\\victorinatop.server\\victorinatop.server\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{67832E06-A11F-5E09-5B04-3B3DC1C39C5F}|VictorinaTop.Server\\VictorinaTop.Server.csproj|solutionrelative:victorinatop.server\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,19 +78,227 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\VictorinaTop\\VictorinaTop.Server\\VictorinaTop.Server\\appsettings.json",
+              "RelativeDocumentMoniker": "VictorinaTop.Server\\appsettings.json",
+              "ToolTip": "C:\\VictorinaTop\\VictorinaTop.Server\\VictorinaTop.Server\\appsettings.json",
+              "RelativeToolTip": "VictorinaTop.Server\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-06-08T10:13:50.667Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ErrorHandlingMiddleware.cs",
+              "DocumentMoniker": "C:\\VictorinaTop\\VictorinaTop.Server\\VictorinaTop.Server\\Middleware\\ErrorHandlingMiddleware.cs",
+              "RelativeDocumentMoniker": "VictorinaTop.Server\\Middleware\\ErrorHandlingMiddleware.cs",
+              "ToolTip": "C:\\VictorinaTop\\VictorinaTop.Server\\VictorinaTop.Server\\Middleware\\ErrorHandlingMiddleware.cs",
+              "RelativeToolTip": "VictorinaTop.Server\\Middleware\\ErrorHandlingMiddleware.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-08T10:13:31.966Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "VerificationService.cs",
+              "DocumentMoniker": "C:\\VictorinaTop\\VictorinaTop.Server\\VictorinaTop.Server\\Services\\VerificationService.cs",
+              "RelativeDocumentMoniker": "VictorinaTop.Server\\Services\\VerificationService.cs",
+              "ToolTip": "C:\\VictorinaTop\\VictorinaTop.Server\\VictorinaTop.Server\\Services\\VerificationService.cs",
+              "RelativeToolTip": "VictorinaTop.Server\\Services\\VerificationService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACIAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-08T10:13:23.734Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "EmailService.cs",
+              "DocumentMoniker": "C:\\VictorinaTop\\VictorinaTop.Server\\VictorinaTop.Server\\Services\\EmailService.cs",
+              "RelativeDocumentMoniker": "VictorinaTop.Server\\Services\\EmailService.cs",
+              "ToolTip": "C:\\VictorinaTop\\VictorinaTop.Server\\VictorinaTop.Server\\Services\\EmailService.cs",
+              "RelativeToolTip": "VictorinaTop.Server\\Services\\EmailService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAA4AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-08T10:13:17.118Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "PasswordHasher.cs",
+              "DocumentMoniker": "C:\\VictorinaTop\\VictorinaTop.Server\\VictorinaTop.Server\\Services\\PasswordHasher.cs",
+              "RelativeDocumentMoniker": "VictorinaTop.Server\\Services\\PasswordHasher.cs",
+              "ToolTip": "C:\\VictorinaTop\\VictorinaTop.Server\\VictorinaTop.Server\\Services\\PasswordHasher.cs",
+              "RelativeToolTip": "VictorinaTop.Server\\Services\\PasswordHasher.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-08T10:13:10.93Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "JwtService.cs",
+              "DocumentMoniker": "C:\\VictorinaTop\\VictorinaTop.Server\\VictorinaTop.Server\\Services\\JwtService.cs",
+              "RelativeDocumentMoniker": "VictorinaTop.Server\\Services\\JwtService.cs",
+              "ToolTip": "C:\\VictorinaTop\\VictorinaTop.Server\\VictorinaTop.Server\\Services\\JwtService.cs",
+              "RelativeToolTip": "VictorinaTop.Server\\Services\\JwtService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-08T10:13:05.579Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\VictorinaTop\\VictorinaTop.Server\\VictorinaTop.Server\\Program.cs",
               "RelativeDocumentMoniker": "VictorinaTop.Server\\Program.cs",
               "ToolTip": "C:\\VictorinaTop\\VictorinaTop.Server\\VictorinaTop.Server\\Program.cs",
               "RelativeToolTip": "VictorinaTop.Server\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFEAAAAKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-08T08:57:15.14Z",
+              "WhenOpened": "2026-06-08T09:40:51.334Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "ScoresController.cs",
+              "DocumentMoniker": "C:\\VictorinaTop\\VictorinaTop.Server\\VictorinaTop.Server\\Controllers\\ScoresController.cs",
+              "RelativeDocumentMoniker": "VictorinaTop.Server\\Controllers\\ScoresController.cs",
+              "ToolTip": "C:\\VictorinaTop\\VictorinaTop.Server\\VictorinaTop.Server\\Controllers\\ScoresController.cs",
+              "RelativeToolTip": "VictorinaTop.Server\\Controllers\\ScoresController.cs",
+              "ViewState": "AgIAABsAAAAAAAAAAIBJwDYAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-08T10:12:55.413Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "QuestionsController.cs",
+              "DocumentMoniker": "C:\\VictorinaTop\\VictorinaTop.Server\\VictorinaTop.Server\\Controllers\\QuestionsController.cs",
+              "RelativeDocumentMoniker": "VictorinaTop.Server\\Controllers\\QuestionsController.cs",
+              "ToolTip": "C:\\VictorinaTop\\VictorinaTop.Server\\VictorinaTop.Server\\Controllers\\QuestionsController.cs",
+              "RelativeToolTip": "VictorinaTop.Server\\Controllers\\QuestionsController.cs",
+              "ViewState": "AgIAABoAAAAAAAAAAAA6wDgAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-08T10:12:45.309Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "ThemesController.cs",
+              "DocumentMoniker": "C:\\VictorinaTop\\VictorinaTop.Server\\VictorinaTop.Server\\Controllers\\ThemesController.cs",
+              "RelativeDocumentMoniker": "VictorinaTop.Server\\Controllers\\ThemesController.cs",
+              "ToolTip": "C:\\VictorinaTop\\VictorinaTop.Server\\VictorinaTop.Server\\Controllers\\ThemesController.cs",
+              "RelativeToolTip": "VictorinaTop.Server\\Controllers\\ThemesController.cs",
+              "ViewState": "AgIAAB8AAAAAAAAAAABQwEAAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-08T10:12:36.302Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "AppDbContext.cs",
+              "DocumentMoniker": "C:\\VictorinaTop\\VictorinaTop.Server\\VictorinaTop.Server\\Data\\AppDbContext.cs",
+              "RelativeDocumentMoniker": "VictorinaTop.Server\\Data\\AppDbContext.cs",
+              "ToolTip": "C:\\VictorinaTop\\VictorinaTop.Server\\VictorinaTop.Server\\Data\\AppDbContext.cs",
+              "RelativeToolTip": "VictorinaTop.Server\\Data\\AppDbContext.cs",
+              "ViewState": "AgIAAAQAAAAAAAAAAABQwCUAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-08T10:12:18.438Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "VerificationCode.cs",
+              "DocumentMoniker": "C:\\VictorinaTop\\VictorinaTop.Server\\VictorinaTop.Server\\Models\\VerificationCode.cs",
+              "RelativeDocumentMoniker": "VictorinaTop.Server\\Models\\VerificationCode.cs",
+              "ToolTip": "C:\\VictorinaTop\\VictorinaTop.Server\\VictorinaTop.Server\\Models\\VerificationCode.cs",
+              "RelativeToolTip": "VictorinaTop.Server\\Models\\VerificationCode.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-08T10:12:09.98Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "Score.cs",
+              "DocumentMoniker": "C:\\VictorinaTop\\VictorinaTop.Server\\VictorinaTop.Server\\Models\\Score.cs",
+              "RelativeDocumentMoniker": "VictorinaTop.Server\\Models\\Score.cs",
+              "ToolTip": "C:\\VictorinaTop\\VictorinaTop.Server\\VictorinaTop.Server\\Models\\Score.cs",
+              "RelativeToolTip": "VictorinaTop.Server\\Models\\Score.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-08T10:12:03.101Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "C:\\VictorinaTop\\VictorinaTop.Server\\VictorinaTop.Server\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "VictorinaTop.Server\\Controllers\\AuthController.cs",
+              "ToolTip": "C:\\VictorinaTop\\VictorinaTop.Server\\VictorinaTop.Server\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "VictorinaTop.Server\\Controllers\\AuthController.cs",
+              "ViewState": "AgIAAEMAAAAAAAAAAIBJwGQAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-08T09:41:33.478Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "Question.cs",
+              "DocumentMoniker": "C:\\VictorinaTop\\VictorinaTop.Server\\VictorinaTop.Server\\Models\\Question.cs",
+              "RelativeDocumentMoniker": "VictorinaTop.Server\\Models\\Question.cs",
+              "ToolTip": "C:\\VictorinaTop\\VictorinaTop.Server\\VictorinaTop.Server\\Models\\Question.cs",
+              "RelativeToolTip": "VictorinaTop.Server\\Models\\Question.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-08T10:11:57.974Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "Theme.cs",
+              "DocumentMoniker": "C:\\VictorinaTop\\VictorinaTop.Server\\VictorinaTop.Server\\Models\\Theme.cs",
+              "RelativeDocumentMoniker": "VictorinaTop.Server\\Models\\Theme.cs",
+              "ToolTip": "C:\\VictorinaTop\\VictorinaTop.Server\\VictorinaTop.Server\\Models\\Theme.cs",
+              "RelativeToolTip": "VictorinaTop.Server\\Models\\Theme.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-08T10:11:53.101Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "User.cs",
+              "DocumentMoniker": "C:\\VictorinaTop\\VictorinaTop.Server\\VictorinaTop.Server\\Models\\User.cs",
+              "RelativeDocumentMoniker": "VictorinaTop.Server\\Models\\User.cs",
+              "ToolTip": "C:\\VictorinaTop\\VictorinaTop.Server\\VictorinaTop.Server\\Models\\User.cs",
+              "RelativeToolTip": "VictorinaTop.Server\\Models\\User.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-08T09:41:17.971Z",
               "EditorCaption": ""
             }
           ]
