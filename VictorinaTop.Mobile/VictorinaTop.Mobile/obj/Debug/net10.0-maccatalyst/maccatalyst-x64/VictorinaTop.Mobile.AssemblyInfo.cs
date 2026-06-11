@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("VictorinaTop.Mobile")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+230d1a4fe2b01a736f85be28c4998d0989c326fa")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+723a62b79fa751dc4d23723aabf60067fd050096")]
 [assembly: System.Reflection.AssemblyProductAttribute("VictorinaTop.Mobile")]
 [assembly: System.Reflection.AssemblyTitleAttribute("VictorinaTop.Mobile")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

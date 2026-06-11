@@ -79,7 +79,7 @@ public partial class ErrorPage : ContentPage
 
             if (result)
             {
-                await Navigation.PushAsync(new MenuPage(true));
+                await Navigation.PushAsync(new MenuPage(true)); ;
             }
         }
         else

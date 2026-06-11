@@ -9,16 +9,27 @@ public partial class MenuPage : ContentPage
     private readonly LocalDatabaseService _cache;
     private readonly PreferencesService _prefs;
     private List<Theme> _themes;
+    private readonly bool _isOfflineMode;
+    public MenuPage() : this(false)
+    {
 
-    public MenuPage()
+    }
+    public MenuPage(bool isOfflineMode)
     {
         InitializeComponent();
         _prefs = new PreferencesService();
         _api = new ApiService(_prefs);
         _cache = new LocalDatabaseService();
+        _isOfflineMode = isOfflineMode;
 
-        LoadData();  
+        if (_isOfflineMode)
+        {
+            Title = "Офлайн режим";
+        }
+
+        LoadData();
     }
+
 
     protected override async void OnAppearing()
     {
