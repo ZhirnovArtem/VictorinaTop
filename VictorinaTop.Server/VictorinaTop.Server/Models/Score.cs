@@ -4,9 +4,7 @@ public class Score
 {
     public int Id { get; set; }
     public int UserId { get; set; }
-    public int ThemeId { get; set; }
+    public string ThemeName { get; set; } = string.Empty; 
     public int Points { get; set; }
     public DateTime AchievedAt { get; set; }
-    public User? User { get; set; }
-    public Theme? Theme { get; set; }
 }

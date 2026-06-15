@@ -1,10 +1,8 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using System.Runtime.InteropServices;
 using VictorinaTop.Server.Data;
 using VictorinaTop.Server.Models;
-
 namespace VictorinaTop.Server.Controllers;
 
 [ApiController]
@@ -14,9 +12,15 @@ public class ThemesController : ControllerBase
 {
     private readonly AppDbContext _db;
 
-    public ThemesController(AppDbContext db) => _db = db;
+    public ThemesController(AppDbContext db)
+    {
+        _db = db;
+    }
 
-    public class CreateThemeRequest { public string Name { get; set; } = ""; }
+    public class CreateThemeRequest
+    {
+        public string Name { get; set; } = string.Empty;
+    }
 
     [HttpGet]
     [AllowAnonymous]
@@ -32,9 +36,23 @@ public class ThemesController : ControllerBase
     [AllowAnonymous]
     public async Task<IActionResult> GetQuestions(int id)
     {
+        var theme = await _db.Themes.FindAsync(id);
+        if (theme == null)
+            return NotFound(new { error = "Тема не найдена" });
+
         var questions = await _db.Questions
-            .Where(q => q.ThemeId == id)
-            .Select(q => new { q.Id, q.Text, q.CorrectAnswer, q.OptionA, q.OptionB, q.OptionC, q.OptionD, q.Status })
+            .Where(q => q.Category == theme.Name)
+            .Select(q => new
+            {
+                q.Id,
+                q.Text,
+                q.CorrectAnswer,
+                q.OptionA,
+                q.OptionB,
+                q.OptionC,
+                q.OptionD,
+                q.Status
+            })
             .ToListAsync();
         return Ok(questions);
     }
@@ -43,11 +61,19 @@ public class ThemesController : ControllerBase
     public async Task<IActionResult> Create([FromBody] CreateThemeRequest request)
     {
         var login = User.Identity?.Name;
-        if (string.IsNullOrEmpty(login)) return Unauthorized();
+        if (string.IsNullOrEmpty(login))
+            return Unauthorized();
 
-        var theme = new Theme { Name = request.Name, Author = login, CreatedAt = DateTime.UtcNow };
+        var theme = new Theme
+        {
+            Name = request.Name,
+            Author = login,
+            CreatedAt = DateTime.UtcNow
+        };
+
         _db.Themes.Add(theme);
         await _db.SaveChangesAsync();
+
         return Ok(new { id = theme.Id, name = theme.Name });
     }
 
@@ -56,10 +82,22 @@ public class ThemesController : ControllerBase
     {
         var login = User.Identity?.Name;
         var theme = await _db.Themes.FindAsync(id);
-        if (theme == null) return NotFound();
-        if (theme.Author != login) return Forbid();
+
+        if (theme == null)
+            return NotFound();
+
+        if (theme.Author != login)
+            return Forbid();
+
+        // Удаляем вопросы этой темы
+        var questions = await _db.Questions
+            .Where(q => q.Category == theme.Name)
+            .ToListAsync();
+        _db.Questions.RemoveRange(questions);
+
         _db.Themes.Remove(theme);
         await _db.SaveChangesAsync();
+
         return Ok();
     }
 }

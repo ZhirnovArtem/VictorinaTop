@@ -9,7 +9,10 @@ public class VerificationService
     private readonly AppDbContext _db;
     private readonly Random _random = new();
 
-    public VerificationService(AppDbContext db) => _db = db;
+    public VerificationService(AppDbContext db)
+    {
+        _db = db;
+    }
 
     public string GenerateCode() => _random.Next(100000, 999999).ToString();
 

@@ -1,5 +1,4 @@
 using Microsoft.EntityFrameworkCore;
-using System.Reflection.Emit;
 using VictorinaTop.Server.Models;
 
 namespace VictorinaTop.Server.Data;
@@ -18,21 +17,25 @@ public class AppDbContext : DbContext
     {
         modelBuilder.Entity<User>(entity =>
         {
+            entity.HasKey(e => e.Id);
             entity.HasIndex(e => e.Login).IsUnique();
             entity.HasIndex(e => e.Email).IsUnique();
         });
 
         modelBuilder.Entity<Theme>(entity =>
         {
+            entity.HasKey(e => e.Id);
             entity.HasIndex(e => e.Name).IsUnique();
         });
 
         modelBuilder.Entity<Question>(entity =>
         {
-            entity.HasOne(e => e.Theme)
-                .WithMany()
-                .HasForeignKey(e => e.ThemeId)
-                .OnDelete(DeleteBehavior.Cascade);
+            entity.HasKey(e => e.Id);
+        });
+
+        modelBuilder.Entity<Score>(entity =>
+        {
+            entity.HasKey(e => e.Id);
         });
     }
 }

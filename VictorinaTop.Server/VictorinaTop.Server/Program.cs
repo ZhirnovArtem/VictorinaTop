@@ -1,9 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using VictorinaTop.Server.Data;
@@ -11,7 +7,6 @@ using VictorinaTop.Server.Middleware;
 using VictorinaTop.Server.Services;
 
 var builder = WebApplication.CreateBuilder(args);
-
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -20,12 +15,7 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("MobileApp", policy =>
     {
-        policy.WithOrigins(
-                "http://localhost:5000",
-                "https://localhost:5001",
-                "http://10.0.2.2:5000",
-                "https://10.0.2.2:5001",
-                "ms-appx:///")
+        policy.WithOrigins("http://localhost:5000", "http://10.0.2.2:5000")
             .AllowAnyMethod()
             .AllowAnyHeader()
             .AllowCredentials();
@@ -35,7 +25,7 @@ builder.Services.AddCors(options =>
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-var jwtKey = builder.Configuration["Jwt:Key"] ?? "your-32-character-secret-key-for-jwt-tokens";
+var jwtKey = builder.Configuration["Jwt:Key"] ?? "secret-key-32-chars-long-for-jwt";
 var jwtIssuer = builder.Configuration["Jwt:Issuer"] ?? "VictorinaTop";
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)

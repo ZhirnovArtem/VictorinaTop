@@ -1,6 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using System.Runtime.InteropServices;
 using VictorinaTop.Server.Data;
 using VictorinaTop.Server.Models;
 using VictorinaTop.Server.Services;
@@ -31,11 +30,41 @@ public class AuthController : ControllerBase
         _verification = verification;
     }
 
-    public class RegisterRequest { public string Login { get; set; } = ""; public string Email { get; set; } = ""; public string Password { get; set; } = ""; }
-    public class RegisterResponse { public bool Success { get; set; } public string? Error { get; set; } public bool RequiresVerification { get; set; } }
-    public class VerifyRequest { public string Email { get; set; } = ""; public string Code { get; set; } = ""; public string Type { get; set; } = "register"; }
-    public class LoginRequest { public string LoginOrEmail { get; set; } = ""; public string Password { get; set; } = ""; }
-    public class LoginResponse { public bool Success { get; set; } public string? Token { get; set; } public string? Login { get; set; } public int MaxScore { get; set; } public string? Error { get; set; } }
+    public class RegisterRequest
+    {
+        public string Login { get; set; } = string.Empty;
+        public string Email { get; set; } = string.Empty;
+        public string Password { get; set; } = string.Empty;
+    }
+
+    public class RegisterResponse
+    {
+        public bool Success { get; set; }
+        public string? Error { get; set; }
+        public bool RequiresVerification { get; set; }
+    }
+
+    public class VerifyRequest
+    {
+        public string Email { get; set; } = string.Empty;
+        public string Code { get; set; } = string.Empty;
+        public string Type { get; set; } = "register";
+    }
+
+    public class LoginRequest
+    {
+        public string LoginOrEmail { get; set; } = string.Empty;
+        public string Password { get; set; } = string.Empty;
+    }
+
+    public class LoginResponse
+    {
+        public bool Success { get; set; }
+        public string? Token { get; set; }
+        public string? Login { get; set; }
+        public int MaxScore { get; set; }
+        public string? Error { get; set; }
+    }
 
     [HttpPost("register")]
     public async Task<IActionResult> Register([FromBody] RegisterRequest request)
