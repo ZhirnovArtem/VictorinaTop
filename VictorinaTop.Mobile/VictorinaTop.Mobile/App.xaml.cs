@@ -1,4 +1,4 @@
-﻿using VictorinaTop.Mobile.Services;
+using VictorinaTop.Mobile.Services;
 using VictorinaTop.Mobile.Views;
 
 namespace VictorinaTop.Mobile;
@@ -7,25 +7,20 @@ public partial class App : Application
 {
     private readonly PreferencesService _prefs;
 
-    public App(PreferencesService prefs)
+    public App()
     {
-        InitializeComponent();
-        _prefs = prefs;
+        _prefs = new PreferencesService();
     }
 
-    protected override async void OnStart()
+    protected override Window CreateWindow(IActivationState? activationState)
     {
-        base.OnStart();
-
-        var token = await _prefs.GetToken();
+        var token = _prefs.GetToken().GetAwaiter().GetResult();
 
         if (!string.IsNullOrEmpty(token))
         {
-            MainPage = new NavigationPage(new MenuPage());
+            return new Window(new NavigationPage(new MenuPage()));
         }
-        else
-        {
-            MainPage = new NavigationPage(new MainPage());
-        }
+
+        return new Window(new NavigationPage(new MainPage()));
     }
 }

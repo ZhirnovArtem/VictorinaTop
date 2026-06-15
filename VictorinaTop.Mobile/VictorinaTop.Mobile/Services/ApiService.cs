@@ -1,5 +1,6 @@
 using System.Net.Http.Json;
 using VictorinaTop.Mobile.Models;
+
 namespace VictorinaTop.Mobile.Services;
 
 public class ApiService
@@ -34,25 +35,6 @@ public class ApiService
         Task.Run(async () => await LoadToken());
     }
 
-    public async Task<bool> TestConnection()
-    {
-        try
-        {
-            var response = await _http.GetAsync("health");
-            return response.IsSuccessStatusCode;
-        }
-        catch
-        {
-            return false;
-        }
-    }
-
-    public void SetAuthToken(string token)
-    {
-        _http.DefaultRequestHeaders.Authorization =
-            new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
-    }
-
     private async Task LoadToken()
     {
         var token = await _prefs.GetToken();
@@ -63,7 +45,6 @@ public class ApiService
         }
     }
 
-
     public async Task<(bool success, string error, bool requiresVerification)>
         Register(string login, string email, string password)
     {
@@ -73,9 +54,9 @@ public class ApiService
             var result = await response.Content.ReadFromJsonAsync<RegisterResponse>();
             return (result?.success == true, result?.error ?? "", result?.requiresVerification == true);
         }
-        catch (Exception ex)
+        catch
         {
-            return (false, ex.Message, false);
+            return (false, "Ошибка соединения", false);
         }
     }
 
@@ -91,8 +72,6 @@ public class ApiService
             {
                 await _prefs.SaveToken(result.token);
                 await _prefs.SetUserLogin(result.login);
-                _http.DefaultRequestHeaders.Authorization =
-                    new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", result.token);
                 return (true, result.token, result.login, result.maxScore);
             }
             return (false, "", "", 0);
@@ -132,7 +111,6 @@ public class ApiService
         await _prefs.ClearAll();
         _http.DefaultRequestHeaders.Authorization = null;
     }
-
 
     public async Task<List<Theme>> GetThemes()
     {
@@ -220,28 +198,20 @@ public class ApiService
         }
     }
 
-
-    private class RegisterResponse
+    public async Task<bool> TestConnection()
     {
-        public bool success { get; set; }
-        public string? error { get; set; }
-        public bool requiresVerification { get; set; }
+        try
+        {
+            var response = await _http.GetAsync("health");
+            return response.IsSuccessStatusCode;
+        }
+        catch
+        {
+            return false;
+        }
     }
 
-    private class VerifyResponse
-    {
-        public bool success { get; set; }
-        public string? token { get; set; }
-        public string? login { get; set; }
-        public int maxScore { get; set; }
-    }
-
-    private class LoginResponse
-    {
-        public bool success { get; set; }
-        public string? token { get; set; }
-        public string? login { get; set; }
-        public int maxScore { get; set; }
-        public string? error { get; set; }
-    }
+    private class RegisterResponse { public bool success { get; set; } public string? error { get; set; } public bool requiresVerification { get; set; } }
+    private class VerifyResponse { public bool success { get; set; } public string? token { get; set; } public string? login { get; set; } public int maxScore { get; set; } }
+    private class LoginResponse { public bool success { get; set; } public string? token { get; set; } public string? login { get; set; } public int maxScore { get; set; } public string? error { get; set; } }
 }

@@ -2,16 +2,17 @@ using VictorinaTop.Mobile.Services;
 
 namespace VictorinaTop.Mobile.Views;
 
-public class EnteringPage : ContentPage
+public class RegistrationPage : ContentPage
 {
     private readonly Entry _loginEntry;
+    private readonly Entry _emailEntry;
     private readonly Entry _passwordEntry;
     private readonly Label _errorLabel;
-    private readonly Button _enterBtn;
+    private readonly Button _registerBtn;
     private readonly ApiService _api;
     private readonly PreferencesService _prefs;
 
-    public EnteringPage()
+    public RegistrationPage()
     {
         _prefs = new PreferencesService();
         _api = new ApiService(_prefs);
@@ -29,7 +30,7 @@ public class EnteringPage : ContentPage
 
         var titleLabel = new Label
         {
-            Text = "Вход",
+            Text = "Регистрация",
             FontSize = 18,
             FontAttributes = FontAttributes.Bold,
             TextColor = Color.FromArgb("#FFD700"),
@@ -47,7 +48,7 @@ public class EnteringPage : ContentPage
 
         var mainTitleLabel = new Label
         {
-            Text = "🔐 Вход в аккаунт",
+            Text = "📝 Создание аккаунта",
             FontSize = 28,
             FontAttributes = FontAttributes.Bold,
             TextColor = Color.FromArgb("#FFD700"),
@@ -57,43 +58,42 @@ public class EnteringPage : ContentPage
 
         _loginEntry = new Entry
         {
-            Placeholder = "Логин или Email",
+            Placeholder = "Логин",
             BackgroundColor = Color.FromArgb("#2D2D44"),
             TextColor = Colors.White,
             HeightRequest = 55
         };
 
+        _emailEntry = new Entry
+        {
+            Placeholder = "Email",
+            BackgroundColor = Color.FromArgb("#2D2D44"),
+            TextColor = Colors.White,
+            Keyboard = Keyboard.Email,
+            HeightRequest = 55
+        };
+
         _passwordEntry = new Entry
         {
-            Placeholder = "Пароль",
+            Placeholder = "Пароль (мин. 4 символа)",
             BackgroundColor = Color.FromArgb("#2D2D44"),
             TextColor = Colors.White,
             IsPassword = true,
             HeightRequest = 55
         };
 
-        var forgotPasswordLabel = new Label
+        _registerBtn = new Button
         {
-            Text = "Забыли пароль?",
-            TextColor = Color.FromArgb("#4A90E2"),
-            TextDecorations = TextDecorations.Underline,
-            HorizontalOptions = LayoutOptions.End,
-            Margin = new Thickness(0, 5, 0, 0)
-        };
-        forgotPasswordLabel.GestureRecognizers.Add(new TapGestureRecognizer());
-        ((TapGestureRecognizer)forgotPasswordLabel.GestureRecognizers[0]).Tapped += OnForgotPasswordTapped;
-
-        _enterBtn = new Button
-        {
-            Text = "Войти",
-            BackgroundColor = Color.FromArgb("#4A90E2"),
+            Text = "📧 Зарегистрироваться",
+            BackgroundColor = Color.FromArgb("#50C878"),
             TextColor = Colors.White,
             FontSize = 18,
+            FontAttributes = FontAttributes.Bold,
             CornerRadius = 15,
             HeightRequest = 55,
             Margin = new Thickness(0, 20, 0, 0)
         };
-        _enterBtn.Clicked += OnEnterClicked;
+        _registerBtn.Clicked += OnRegisterClicked;
 
         _errorLabel = new Label
         {
@@ -107,53 +107,59 @@ public class EnteringPage : ContentPage
             Spacing = 15,
             Padding = new Thickness(30),
             VerticalOptions = LayoutOptions.Center,
-            Children = { mainTitleLabel, _loginEntry, _passwordEntry, forgotPasswordLabel, _enterBtn, _errorLabel }
+            Children = { mainTitleLabel, _loginEntry, _emailEntry, _passwordEntry, _registerBtn, _errorLabel }
         };
+
+        var scrollView = new ScrollView { Content = formLayout };
 
         var grid = new Grid();
         grid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
         grid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Star });
         grid.Add(headerLayout, 0, 0);
-        grid.Add(formLayout, 0, 1);
+        grid.Add(scrollView, 0, 1);
 
         Content = grid;
         BackgroundColor = Color.FromArgb("#1A1A2E");
         NavigationPage.SetHasBackButton(this, false);
     }
 
-    private async void OnEnterClicked(object sender, EventArgs e)
+    private async void OnRegisterClicked(object sender, EventArgs e)
     {
-        var loginOrEmail = _loginEntry.Text?.Trim();
+        var login = _loginEntry.Text?.Trim();
+        var email = _emailEntry.Text?.Trim();
         var password = _passwordEntry.Text?.Trim();
 
-        if (string.IsNullOrEmpty(loginOrEmail) || string.IsNullOrEmpty(password))
+        if (string.IsNullOrEmpty(login) || string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
         {
             _errorLabel.Text = "Заполните все поля!";
             _errorLabel.IsVisible = true;
             return;
         }
 
-        var (success, token, login, maxScore) = await _api.Login(loginOrEmail, password);
-
-        if (success)
+        if (password.Length < 4)
         {
-            await Navigation.PushAsync(new MenuPage());
+            _errorLabel.Text = "Пароль должен быть не менее 4 символов!";
+            _errorLabel.IsVisible = true;
+            return;
+        }
+
+        if (!email.Contains("@") || !email.Contains("."))
+        {
+            _errorLabel.Text = "Введите корректный email!";
+            _errorLabel.IsVisible = true;
+            return;
+        }
+
+        var (success, error, requiresVerification) = await _api.Register(login, email, password);
+
+        if (success && requiresVerification)
+        {
+            await Navigation.PushAsync(new EmailVerificationPage(email));
         }
         else
         {
-            _errorLabel.Text = "Неверный логин или пароль";
+            _errorLabel.Text = error;
             _errorLabel.IsVisible = true;
-        }
-    }
-
-    private async void OnForgotPasswordTapped(object sender, EventArgs e)
-    {
-        var email = await DisplayPromptAsync("Восстановление пароля",
-            "Введите ваш email:", "Отправить", "Отмена", keyboard: Keyboard.Email);
-
-        if (!string.IsNullOrEmpty(email))
-        {
-            await DisplayAlert("Информация", "Код отправлен на email", "OK");
         }
     }
 

@@ -1,64 +1,135 @@
 using VictorinaTop.Mobile.Services;
-using VictorinaTop.Mobile.Models;
 
 namespace VictorinaTop.Mobile.Views;
 
-public partial class ErrorPage : ContentPage
+public class ErrorPage : ContentPage
 {
     private readonly ApiService _api;
-    private readonly LocalDatabaseService _cache;
-    private readonly string _errorDetails;
+    private readonly PreferencesService _prefs;
+    private readonly Label _errorMessageLabel;
+    private Button _retryBtn;
 
     public ErrorPage(string errorMessage = null)
     {
-        InitializeComponent();
-        _api = new ApiService(new PreferencesService());
-        _cache = new LocalDatabaseService();
+        _prefs = new PreferencesService();
+        _api = new ApiService(_prefs);
 
-        if (!string.IsNullOrEmpty(errorMessage))
+        BackgroundColor = Color.FromArgb("#1A1A2E");
+        NavigationPage.SetHasBackButton(this, false);
+
+        var errorIcon = new Label
         {
-            ErrorMessageLabel.Text = errorMessage;
-        }
+            Text = "⚠️",
+            FontSize = 80,
+            TextColor = Color.FromArgb("#FF6B6B"),
+            HorizontalOptions = LayoutOptions.Center
+        };
+
+        var titleLabel = new Label
+        {
+            Text = "Ошибка подключения",
+            FontSize = 28,
+            FontAttributes = FontAttributes.Bold,
+            TextColor = Color.FromArgb("#FFD700"),
+            HorizontalOptions = LayoutOptions.Center,
+            Margin = new Thickness(0, 20, 0, 10)
+        };
+
+        _errorMessageLabel = new Label
+        {
+            Text = errorMessage ?? "Не удалось подключиться к серверу.\nПроверьте интернет-соединение.",
+            FontSize = 16,
+            TextColor = Color.FromArgb("#CCCCCC"),
+            HorizontalOptions = LayoutOptions.Center,
+            HorizontalTextAlignment = TextAlignment.Center,
+            Margin = new Thickness(30, 0)
+        };
+
+        _retryBtn = new Button
+        {
+            Text = "🔄 Попробовать снова",
+            BackgroundColor = Color.FromArgb("#4A90E2"),
+            TextColor = Colors.White,
+            FontSize = 18,
+            FontAttributes = FontAttributes.Bold,
+            CornerRadius = 15,
+            HeightRequest = 55
+        };
+        _retryBtn.Clicked += OnRetryClicked;
+
+        var homeBtn = new Button
+        {
+            Text = "🏠 На главную",
+            BackgroundColor = Color.FromArgb("#34495E"),
+            TextColor = Colors.White,
+            FontSize = 16,
+            CornerRadius = 15,
+            HeightRequest = 50
+        };
+        homeBtn.Clicked += OnHomeClicked;
+
+        var offlineBtn = new Button
+        {
+            Text = "📝 Попробовать без интернета (офлайн режим)",
+            BackgroundColor = Color.FromArgb("#9B59B6"),
+            TextColor = Colors.White,
+            FontSize = 14,
+            CornerRadius = 15,
+            HeightRequest = 45
+        };
+        offlineBtn.Clicked += OnOfflineClicked;
+
+        var buttonsLayout = new VerticalStackLayout
+        {
+            Spacing = 15,
+            Padding = new Thickness(30),
+            Children = { _retryBtn, homeBtn, offlineBtn }
+        };
+
+        var grid = new Grid
+        {
+            RowDefinitions =
+            {
+                new RowDefinition { Height = GridLength.Star },
+                new RowDefinition { Height = GridLength.Auto },
+                new RowDefinition { Height = GridLength.Auto },
+                new RowDefinition { Height = GridLength.Auto },
+                new RowDefinition { Height = GridLength.Star }
+            }
+        };
+        grid.Add(errorIcon, 0, 1);
+        grid.Add(titleLabel, 0, 2);
+        grid.Add(_errorMessageLabel, 0, 3);
+        grid.Add(buttonsLayout, 0, 4);
+
+        Content = grid;
     }
 
     private async void OnRetryClicked(object sender, EventArgs e)
     {
-        RetryBtn.IsEnabled = false;
-        RetryBtn.Text = "Проверка...";
+        _retryBtn.IsEnabled = false;
+        _retryBtn.Text = "Проверка...";
 
-        try
+        var isConnected = await _api.TestConnection();
+
+        if (isConnected)
         {
-            var token = await _api.TestConnection();
+            var savedToken = await _prefs.GetToken();
 
-            if (token)
+            if (!string.IsNullOrEmpty(savedToken))
             {
-                // Проверяем, есть ли сохранённый токен
-                var prefs = new PreferencesService();
-                var savedToken = await prefs.GetToken();
-
-                if (!string.IsNullOrEmpty(savedToken))
-                {
-                    // Пытаемся восстановить сессию
-                    _api.SetAuthToken(savedToken);
-                    await Navigation.PushAsync(new MenuPage());
-                }
-                else
-                {
-                    await Navigation.PopToRootAsync();
-                }
+                await Navigation.PushAsync(new MenuPage());
             }
             else
             {
-                await DisplayAlert("Ошибка", "Сервер всё ещё недоступен. Проверьте подключение.", "OK");
-                RetryBtn.IsEnabled = true;
-                RetryBtn.Text = "🔄 Попробовать снова";
+                await Navigation.PopToRootAsync();
             }
         }
-        catch (Exception ex)
+        else
         {
-            await DisplayAlert("Ошибка", $"Не удалось подключиться: {ex.Message}", "OK");
-            RetryBtn.IsEnabled = true;
-            RetryBtn.Text = "🔄 Попробовать снова";
+            await DisplayAlert("Ошибка", "Сервер всё ещё недоступен", "OK");
+            _retryBtn.IsEnabled = true;
+            _retryBtn.Text = "🔄 Попробовать снова";
         }
     }
 
@@ -69,7 +140,8 @@ public partial class ErrorPage : ContentPage
 
     private async void OnOfflineClicked(object sender, EventArgs e)
     {
-        var cachedThemes = _cache.GetCachedThemes();
+        var cache = new LocalDatabaseService();
+        var cachedThemes = cache.GetCachedThemes();
 
         if (cachedThemes.Count > 0)
         {
@@ -79,13 +151,13 @@ public partial class ErrorPage : ContentPage
 
             if (result)
             {
-                await Navigation.PushAsync(new MenuPage(true)); ;
+                await Navigation.PushAsync(new MenuPage());
             }
         }
         else
         {
             await DisplayAlert("Нет данных",
-                "Нет сохранённых викторин. Подключитесь к интернету, чтобы загрузить викторины.",
+                "Нет сохранённых викторин. Подключитесь к интернету.",
                 "OK");
         }
     }
