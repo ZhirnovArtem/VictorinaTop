@@ -1,12 +1,14 @@
 ﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.AspNetCore.Builder;
 using System.Text;
 using VictorinaTop.Server.Data;
 using VictorinaTop.Server.Middleware;
 using VictorinaTop.Server.Services;
 
 var builder = WebApplication.CreateBuilder(args);
+
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -49,7 +51,7 @@ builder.Services.AddScoped<PasswordHasher>();
 builder.Services.AddScoped<VerificationService>();
 
 var app = builder.Build();
-
+app.MapGet("/api/health", () => Results.Ok("Healthy"));
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();

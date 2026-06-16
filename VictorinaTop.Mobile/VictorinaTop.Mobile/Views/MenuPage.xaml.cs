@@ -136,9 +136,25 @@ public class MenuPage : ContentPage
             {
                 Text = "Играть",
                 CornerRadius = 10,
-                WidthRequest = 60,
+                WidthRequest = 70,
                 HeightRequest = 35,
                 BackgroundColor = Color.FromArgb("#4A90E2")
+            };
+
+            playButton.Clicked += async (s, e) =>
+            {
+                var frame = (Frame)((Grid)((Button)s).Parent).Parent;
+                var theme = frame.BindingContext as Theme;
+                if (theme == null) return;
+
+                var questions = await _api.GetQuestions(theme.Id);
+
+                if (questions.Count == 0)
+                    questions = _cache.GetCachedQuestions(theme.Id);
+                else
+                    _cache.CacheQuestions(theme.Id, questions);
+
+                await Navigation.PushAsync(new GamePage(theme.Name, questions, theme.Id));
             };
 
             var infoLayout = new VerticalStackLayout
@@ -316,7 +332,10 @@ public class MenuPage : ContentPage
         if (confirm)
         {
             await _api.Logout();
-            await Navigation.PopToRootAsync();
+            if (Application.Current?.Windows[0] is Window window)
+            {
+                window.Page = new NavigationPage(new MainPage());
+            }
         }
     }
 }

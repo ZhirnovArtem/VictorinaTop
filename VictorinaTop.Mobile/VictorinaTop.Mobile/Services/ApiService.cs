@@ -7,14 +7,16 @@ public class ApiService
 {
     private readonly HttpClient _http;
     private readonly PreferencesService _prefs;
+    private bool _tokenLoaded = false;
+
 #if DEBUG
 #if ANDROID
     private const string BaseUrl = "http://10.0.2.2:5000/api/";
 #else
-            private const string BaseUrl = "http://localhost:5000/api/";
+    private const string BaseUrl = "http://localhost:5000/api/";
 #endif
 #else
-        private const string BaseUrl = "https://your-server.com:5001/api/";
+    private const string BaseUrl = "https://your-server.com/api/";
 #endif
 
     public ApiService(PreferencesService prefs)
@@ -31,18 +33,18 @@ public class ApiService
         _http.Timeout = TimeSpan.FromSeconds(30);
         _http.DefaultRequestHeaders.Accept.Add(
             new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
-
-        Task.Run(async () => await LoadToken());
     }
 
-    private async Task LoadToken()
+    private async Task EnsureTokenLoaded()
     {
+        if (_tokenLoaded) return;
         var token = await _prefs.GetToken();
         if (!string.IsNullOrEmpty(token))
         {
             _http.DefaultRequestHeaders.Authorization =
                 new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
         }
+        _tokenLoaded = true;
     }
 
     public async Task<(bool success, string error, bool requiresVerification)>
@@ -54,30 +56,41 @@ public class ApiService
             var result = await response.Content.ReadFromJsonAsync<RegisterResponse>();
             return (result?.success == true, result?.error ?? "", result?.requiresVerification == true);
         }
-        catch
+        catch (Exception ex)
         {
+#if DEBUG
+            Console.WriteLine($"[ApiService.Register] {ex.Message}");
+#endif
             return (false, "Ошибка соединения", false);
         }
     }
 
     public async Task<(bool success, string token, string login, int maxScore)>
-        Verify(string email, string code)
+        Verify(string email, string code, string login, string password)
     {
         try
         {
-            var response = await _http.PostAsJsonAsync("auth/verify", new { email, code, type = "register" });
+            var response = await _http.PostAsJsonAsync("auth/verify", new { email, code, type = "register", login, password });
             var result = await response.Content.ReadFromJsonAsync<VerifyResponse>();
 
             if (result?.success == true && result.token != null)
             {
                 await _prefs.SaveToken(result.token);
                 await _prefs.SetUserLogin(result.login);
-                return (true, result.token, result.login, result.maxScore);
+
+                _http.DefaultRequestHeaders.Authorization =
+                    new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", result.token);
+                _tokenLoaded = true;
+
+                return (true, result.token, result.login ?? "", result.maxScore);
             }
             return (false, "", "", 0);
         }
-        catch
+        catch (Exception ex)
         {
+#if DEBUG
+            Console.WriteLine($"[ApiService.Verify] {ex.Message}");
+#endif
             return (false, "", "", 0);
         }
     }
@@ -96,12 +109,17 @@ public class ApiService
                 await _prefs.SetUserLogin(result.login);
                 _http.DefaultRequestHeaders.Authorization =
                     new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", result.token);
-                return (true, result.token, result.login, result.maxScore);
+                _tokenLoaded = true;
+
+                return (true, result.token, result.login ?? "", result.maxScore);
             }
             return (false, "", "", 0);
         }
-        catch
+        catch (Exception ex)
         {
+#if DEBUG
+            Console.WriteLine($"[ApiService.Login] {ex.Message}");
+#endif
             return (false, "", "", 0);
         }
     }
@@ -110,16 +128,21 @@ public class ApiService
     {
         await _prefs.ClearAll();
         _http.DefaultRequestHeaders.Authorization = null;
+        _tokenLoaded = false;
     }
 
     public async Task<List<Theme>> GetThemes()
     {
         try
         {
+            await EnsureTokenLoaded();
             return await _http.GetFromJsonAsync<List<Theme>>("themes") ?? new List<Theme>();
         }
-        catch
+        catch (Exception ex)
         {
+#if DEBUG
+            Console.WriteLine($"[ApiService.GetThemes] {ex.Message}");
+#endif
             return new List<Theme>();
         }
     }
@@ -128,25 +151,41 @@ public class ApiService
     {
         try
         {
+            await EnsureTokenLoaded();
             return await _http.GetFromJsonAsync<List<Question>>($"themes/{themeId}/questions") ?? new List<Question>();
         }
-        catch
+        catch (Exception ex)
         {
+#if DEBUG
+            Console.WriteLine($"[ApiService.GetQuestions] {ex.Message}");
+#endif
             return new List<Question>();
         }
     }
 
-    public async Task<bool> CreateTheme(string name)
+    public async Task<int> CreateTheme(string name)
     {
         try
         {
             var response = await _http.PostAsJsonAsync("themes", new { name });
-            return response.IsSuccessStatusCode;
+
+            if (response.IsSuccessStatusCode)
+            {
+                var result = await response.Content.ReadFromJsonAsync<CreateThemeResponse>();
+                return result?.id ?? 0;
+            }
+            return 0;
         }
         catch
         {
-            return false;
+            return 0;
         }
+    }
+
+    private class CreateThemeResponse
+    {
+        public int id { get; set; }
+        public string name { get; set; } = string.Empty;
     }
 
     public async Task<bool> AddQuestion(int themeId, Question question)
@@ -177,11 +216,15 @@ public class ApiService
     {
         try
         {
+            await EnsureTokenLoaded();
             var response = await _http.PostAsJsonAsync("scores", new { themeId, points });
             return response.IsSuccessStatusCode;
         }
-        catch
+        catch (Exception ex)
         {
+#if DEBUG
+            Console.WriteLine($"[ApiService.SubmitScore] {ex.Message}");
+#endif
             return false;
         }
     }
@@ -190,10 +233,14 @@ public class ApiService
     {
         try
         {
+            await EnsureTokenLoaded();
             return await _http.GetFromJsonAsync<List<User>>($"scores/leaderboard?limit={limit}") ?? new List<User>();
         }
-        catch
+        catch (Exception ex)
         {
+#if DEBUG
+            Console.WriteLine($"[ApiService.GetLeaderboard] {ex.Message}");
+#endif
             return new List<User>();
         }
     }
@@ -205,8 +252,11 @@ public class ApiService
             var response = await _http.GetAsync("health");
             return response.IsSuccessStatusCode;
         }
-        catch
+        catch (Exception ex)
         {
+#if DEBUG
+            Console.WriteLine($"[ApiService.TestConnection] {ex.Message}");
+#endif
             return false;
         }
     }

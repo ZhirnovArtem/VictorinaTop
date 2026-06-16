@@ -14,7 +14,7 @@ public class VerificationService
         _db = db;
     }
 
-    public string GenerateCode() => _random.Next(100000, 999999).ToString();
+    public string GenerateCode() => _random.Next(100000, 1000000).ToString();
 
     public async Task SaveCode(string email, string code, string type)
     {

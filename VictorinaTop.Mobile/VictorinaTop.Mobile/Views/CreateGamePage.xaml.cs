@@ -32,6 +32,7 @@ public class CreateGamePage : ContentPage
 
     private void BuildUI()
     {
+        // --- Шапка ---
         var backButton = new Button
         {
             Text = "← Назад",
@@ -92,6 +93,7 @@ public class CreateGamePage : ContentPage
             Children = { headerGrid }
         };
 
+        // --- Поля ввода ---
         _themeEntry = new Entry
         {
             Placeholder = "Название викторины",
@@ -160,6 +162,7 @@ public class CreateGamePage : ContentPage
             HeightRequest = 50
         };
 
+        // --- Кнопки ---
         _addQuestionBtn = new Button
         {
             Text = "➕ Добавить вопрос",
@@ -180,6 +183,20 @@ public class CreateGamePage : ContentPage
         };
         _saveQuizBtn.Clicked += OnSaveQuiz;
 
+        // --- Grid с кнопками ---
+        var buttonGrid = new Grid
+        {
+            ColumnDefinitions =
+            {
+                new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) },
+                new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) }
+            },
+            ColumnSpacing = 10
+        };
+        buttonGrid.Add(_addQuestionBtn, 0, 0);
+        buttonGrid.Add(_saveQuizBtn, 1, 0);
+
+        // --- Сообщение ---
         _messageLabel = new Label
         {
             TextColor = Color.FromArgb("#FFD700"),
@@ -187,6 +204,7 @@ public class CreateGamePage : ContentPage
             IsVisible = false
         };
 
+        // --- Форма ---
         var formLayout = new VerticalStackLayout
         {
             Spacing = 15,
@@ -211,23 +229,14 @@ public class CreateGamePage : ContentPage
                 _optionCEntry,
                 new Label { Text = "D", TextColor = Color.FromArgb("#4A90E2"), FontSize = 13, FontAttributes = FontAttributes.Bold },
                 _optionDEntry,
-                new Grid
-                {
-                    ColumnDefinitions =
-                    {
-                        new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) },
-                        new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) }
-                    },
-                    ColumnSpacing = 10,
-                },
+                buttonGrid,
                 _messageLabel
             }
         };
 
-
         var scrollView = new ScrollView { Content = formLayout };
 
-        var grid = new Grid
+        var pageGrid = new Grid
         {
             RowDefinitions =
             {
@@ -235,10 +244,10 @@ public class CreateGamePage : ContentPage
                 new RowDefinition { Height = GridLength.Star }
             }
         };
-        grid.Add(headerLayout, 0, 0);
-        grid.Add(scrollView, 0, 1);
+        pageGrid.Add(headerLayout, 0, 0);
+        pageGrid.Add(scrollView, 0, 1);
 
-        Content = grid;
+        Content = pageGrid;
         NavigationPage.SetHasBackButton(this, false);
     }
 
@@ -304,11 +313,24 @@ public class CreateGamePage : ContentPage
             return;
         }
 
-        var success = await _api.CreateTheme(themeName);
+        var themeId = await _api.CreateTheme(themeName);
 
-        if (!success)
+        if (themeId <= 0)
         {
             await ShowMessage("Не удалось создать викторину!", false);
+            return;
+        }
+
+        var allOk = true;
+        foreach (var question in _questions)
+        {
+            var ok = await _api.AddQuestion(themeId, question);
+            if (!ok) allOk = false;
+        }
+
+        if (!allOk)
+        {
+            await ShowMessage("Некоторые вопросы не сохранились!", false);
             return;
         }
 

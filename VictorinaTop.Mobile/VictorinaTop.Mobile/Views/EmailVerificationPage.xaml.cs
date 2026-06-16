@@ -11,12 +11,16 @@ public class EmailVerificationPage : ContentPage
     private readonly ApiService _api;
     private readonly PreferencesService _prefs;
     private readonly string _email;
+    private readonly string _login;
+    private readonly string _password;
 
-    public EmailVerificationPage(string email)
+    public EmailVerificationPage(string email, string login, string password)
     {
         _prefs = new PreferencesService();
         _api = new ApiService(_prefs);
         _email = email;
+        _login = login;
+        _password = password;
 
         var backButton = new Button
         {
@@ -133,7 +137,7 @@ public class EmailVerificationPage : ContentPage
             return;
         }
 
-        var (success, token, login, maxScore) = await _api.Verify(_email, code);
+        var (success, token, login, maxScore) = await _api.Verify(_email, code, _login, _password);
 
         if (success)
         {

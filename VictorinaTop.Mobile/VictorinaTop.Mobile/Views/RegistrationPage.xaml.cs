@@ -154,7 +154,7 @@ public class RegistrationPage : ContentPage
 
         if (success && requiresVerification)
         {
-            await Navigation.PushAsync(new EmailVerificationPage(email));
+            await Navigation.PushAsync(new EmailVerificationPage(email, login, password));
         }
         else
         {

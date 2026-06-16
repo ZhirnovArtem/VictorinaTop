@@ -49,6 +49,8 @@ public class AuthController : ControllerBase
         public string Email { get; set; } = string.Empty;
         public string Code { get; set; } = string.Empty;
         public string Type { get; set; } = "register";
+        public string Login { get; set; } = string.Empty;
+        public string Password { get; set; } = string.Empty;
     }
 
     public class LoginRequest
@@ -79,8 +81,6 @@ public class AuthController : ControllerBase
         await _verification.SaveCode(request.Email, code, "register");
         await _email.SendCode(request.Email, code);
 
-        HttpContext.Items[$"temp_{request.Email}"] = $"{request.Login}|{_hasher.Hash(request.Password)}";
-
         return Ok(new RegisterResponse { Success = true, RequiresVerification = true });
     }
 
@@ -91,16 +91,17 @@ public class AuthController : ControllerBase
         if (!isValid)
             return BadRequest(new { error = "Неверный код" });
 
-        var tempData = HttpContext.Items[$"temp_{request.Email}"]?.ToString();
-        if (string.IsNullOrEmpty(tempData))
-            return BadRequest(new { error = "Данные не найдены" });
+        if (await _db.Users.AnyAsync(u => u.Login == request.Login))
+            return BadRequest(new { error = "Логин занят" });
 
-        var parts = tempData.Split('|');
+        if (await _db.Users.AnyAsync(u => u.Email == request.Email))
+            return BadRequest(new { error = "Email уже зарегистрирован" });
+
         var user = new User
         {
-            Login = parts[0],
+            Login = request.Login,
             Email = request.Email,
-            PasswordHash = parts[1],
+            PasswordHash = _hasher.Hash(request.Password),
             IsEmailVerified = true,
             CreatedAt = DateTime.UtcNow
         };
