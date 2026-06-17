@@ -16,13 +16,23 @@ public partial class App : Application
 
     protected override Window CreateWindow(IActivationState? activationState)
     {
-        var token = _prefs.GetToken().GetAwaiter().GetResult();
+        // Сначала показываем MainPage, потом проверяем токен
+        var navPage = new NavigationPage(new MainPage(_api, _prefs));
+        var window = new Window(navPage);
 
-        if (!string.IsNullOrEmpty(token))
+        // Асинхронно проверяем токен и переходим в меню если есть
+        Task.Run(async () =>
         {
-            return new Window(new NavigationPage(new MenuPage(_api, _prefs)));
-        }
+            var token = await _prefs.GetToken();
+            if (!string.IsNullOrEmpty(token))
+            {
+                MainThread.BeginInvokeOnMainThread(() =>
+                {
+                    window.Page = new NavigationPage(new MenuPage(_api, _prefs));
+                });
+            }
+        });
 
-        return new Window(new NavigationPage(new MainPage(_api, _prefs)));
+        return window;
     }
 }

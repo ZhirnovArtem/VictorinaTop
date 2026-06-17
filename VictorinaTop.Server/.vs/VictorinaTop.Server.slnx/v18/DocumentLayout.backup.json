@@ -3,6 +3,14 @@
   "WorkspaceRootPath": "D:\\Programming\\VictorinaTop\\VictorinaTop.Server\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{67832E06-A11F-5E09-5B04-3B3DC1C39C5F}|VictorinaTop.Server\\VictorinaTop.Server.csproj|d:\\programming\\victorinatop\\victorinatop.server\\victorinatop.server\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{67832E06-A11F-5E09-5B04-3B3DC1C39C5F}|VictorinaTop.Server\\VictorinaTop.Server.csproj|solutionrelative:victorinatop.server\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{67832E06-A11F-5E09-5B04-3B3DC1C39C5F}|VictorinaTop.Server\\VictorinaTop.Server.csproj|d:\\programming\\victorinatop\\victorinatop.server\\victorinatop.server\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{67832E06-A11F-5E09-5B04-3B3DC1C39C5F}|VictorinaTop.Server\\VictorinaTop.Server.csproj|solutionrelative:victorinatop.server\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{67832E06-A11F-5E09-5B04-3B3DC1C39C5F}|VictorinaTop.Server\\VictorinaTop.Server.csproj|d:\\programming\\victorinatop\\victorinatop.server\\victorinatop.server\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{67832E06-A11F-5E09-5B04-3B3DC1C39C5F}|VictorinaTop.Server\\VictorinaTop.Server.csproj|solutionrelative:victorinatop.server\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -13,10 +21,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{67832E06-A11F-5E09-5B04-3B3DC1C39C5F}|VictorinaTop.Server\\VictorinaTop.Server.csproj|d:\\programming\\victorinatop\\victorinatop.server\\victorinatop.server\\controllers\\scorescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{67832E06-A11F-5E09-5B04-3B3DC1C39C5F}|VictorinaTop.Server\\VictorinaTop.Server.csproj|solutionrelative:victorinatop.server\\controllers\\scorescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{67832E06-A11F-5E09-5B04-3B3DC1C39C5F}|VictorinaTop.Server\\VictorinaTop.Server.csproj|d:\\programming\\victorinatop\\victorinatop.server\\victorinatop.server\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{67832E06-A11F-5E09-5B04-3B3DC1C39C5F}|VictorinaTop.Server\\VictorinaTop.Server.csproj|solutionrelative:victorinatop.server\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{67832E06-A11F-5E09-5B04-3B3DC1C39C5F}|VictorinaTop.Server\\VictorinaTop.Server.csproj|d:\\programming\\victorinatop\\victorinatop.server\\victorinatop.server\\controllers\\questionscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -37,10 +41,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{67832E06-A11F-5E09-5B04-3B3DC1C39C5F}|VictorinaTop.Server\\VictorinaTop.Server.csproj|d:\\programming\\victorinatop\\victorinatop.server\\victorinatop.server\\services\\emailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{67832E06-A11F-5E09-5B04-3B3DC1C39C5F}|VictorinaTop.Server\\VictorinaTop.Server.csproj|solutionrelative:victorinatop.server\\services\\emailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{67832E06-A11F-5E09-5B04-3B3DC1C39C5F}|VictorinaTop.Server\\VictorinaTop.Server.csproj|d:\\programming\\victorinatop\\victorinatop.server\\victorinatop.server\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{67832E06-A11F-5E09-5B04-3B3DC1C39C5F}|VictorinaTop.Server\\VictorinaTop.Server.csproj|solutionrelative:victorinatop.server\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{67832E06-A11F-5E09-5B04-3B3DC1C39C5F}|VictorinaTop.Server\\VictorinaTop.Server.csproj|d:\\programming\\victorinatop\\victorinatop.server\\victorinatop.server\\models\\theme.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -89,36 +89,24 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "VerificationService.cs",
-              "DocumentMoniker": "D:\\Programming\\VictorinaTop\\VictorinaTop.Server\\VictorinaTop.Server\\Services\\VerificationService.cs",
-              "RelativeDocumentMoniker": "VictorinaTop.Server\\Services\\VerificationService.cs",
-              "ToolTip": "D:\\Programming\\VictorinaTop\\VictorinaTop.Server\\VictorinaTop.Server\\Services\\VerificationService.cs",
-              "RelativeToolTip": "VictorinaTop.Server\\Services\\VerificationService.cs",
-              "ViewState": "AgIAAA0AAAAAAAAAAAAQwBAAAABNAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-08T10:13:23.734Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
               "Title": "AuthController.cs",
               "DocumentMoniker": "D:\\Programming\\VictorinaTop\\VictorinaTop.Server\\VictorinaTop.Server\\Controllers\\AuthController.cs",
               "RelativeDocumentMoniker": "VictorinaTop.Server\\Controllers\\AuthController.cs",
               "ToolTip": "D:\\Programming\\VictorinaTop\\VictorinaTop.Server\\VictorinaTop.Server\\Controllers\\AuthController.cs",
               "RelativeToolTip": "VictorinaTop.Server\\Controllers\\AuthController.cs",
-              "ViewState": "AgIAAGsAAAAAAAAAAAAIwIIAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAFoAAAAAAAAAAAAUwGUAAAAHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-06-08T09:41:33.478Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "ThemesController.cs",
               "DocumentMoniker": "D:\\Programming\\VictorinaTop\\VictorinaTop.Server\\VictorinaTop.Server\\Controllers\\ThemesController.cs",
               "RelativeDocumentMoniker": "VictorinaTop.Server\\Controllers\\ThemesController.cs",
@@ -130,7 +118,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "QuestionsController.cs",
               "DocumentMoniker": "D:\\Programming\\VictorinaTop\\VictorinaTop.Server\\VictorinaTop.Server\\Controllers\\QuestionsController.cs",
               "RelativeDocumentMoniker": "VictorinaTop.Server\\Controllers\\QuestionsController.cs",
@@ -142,7 +130,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "ScoresController.cs",
               "DocumentMoniker": "D:\\Programming\\VictorinaTop\\VictorinaTop.Server\\VictorinaTop.Server\\Controllers\\ScoresController.cs",
               "RelativeDocumentMoniker": "VictorinaTop.Server\\Controllers\\ScoresController.cs",
@@ -150,12 +138,11 @@
               "RelativeToolTip": "VictorinaTop.Server\\Controllers\\ScoresController.cs",
               "ViewState": "AgIAABsAAAAAAAAAAAAIwDkAAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-08T10:12:55.413Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-06-08T10:12:55.413Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "AppDbContext.cs",
               "DocumentMoniker": "D:\\Programming\\VictorinaTop\\VictorinaTop.Server\\VictorinaTop.Server\\Data\\AppDbContext.cs",
               "RelativeDocumentMoniker": "VictorinaTop.Server\\Data\\AppDbContext.cs",
@@ -163,12 +150,11 @@
               "RelativeToolTip": "VictorinaTop.Server\\Data\\AppDbContext.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-15T09:41:18.479Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-06-15T09:41:18.479Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\Programming\\VictorinaTop\\VictorinaTop.Server\\VictorinaTop.Server\\Program.cs",
               "RelativeDocumentMoniker": "VictorinaTop.Server\\Program.cs",
@@ -181,7 +167,32 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\Programming\\VictorinaTop\\VictorinaTop.Server\\VictorinaTop.Server\\appsettings.json",
+              "RelativeDocumentMoniker": "VictorinaTop.Server\\appsettings.json",
+              "ToolTip": "D:\\Programming\\VictorinaTop\\VictorinaTop.Server\\VictorinaTop.Server\\appsettings.json",
+              "RelativeToolTip": "VictorinaTop.Server\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-06-08T10:13:50.667Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 8,
+              "Title": "VerificationService.cs",
+              "DocumentMoniker": "D:\\Programming\\VictorinaTop\\VictorinaTop.Server\\VictorinaTop.Server\\Services\\VerificationService.cs",
+              "RelativeDocumentMoniker": "VictorinaTop.Server\\Services\\VerificationService.cs",
+              "ToolTip": "D:\\Programming\\VictorinaTop\\VictorinaTop.Server\\VictorinaTop.Server\\Services\\VerificationService.cs",
+              "RelativeToolTip": "VictorinaTop.Server\\Services\\VerificationService.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAQwBAAAABNAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-08T10:13:23.734Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
               "Title": "EmailService.cs",
               "DocumentMoniker": "D:\\Programming\\VictorinaTop\\VictorinaTop.Server\\VictorinaTop.Server\\Services\\EmailService.cs",
               "RelativeDocumentMoniker": "VictorinaTop.Server\\Services\\EmailService.cs",
@@ -193,7 +204,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "CreateQuestionRequest.cs",
               "DocumentMoniker": "D:\\Programming\\VictorinaTop\\VictorinaTop.Server\\VictorinaTop.Server\\DTOs\\Questions\\CreateQuestionRequest.cs",
               "RelativeDocumentMoniker": "VictorinaTop.Server\\DTOs\\Questions\\CreateQuestionRequest.cs",
@@ -202,18 +213,6 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-06-16T11:40:07.109Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "D:\\Programming\\VictorinaTop\\VictorinaTop.Server\\VictorinaTop.Server\\appsettings.json",
-              "RelativeDocumentMoniker": "VictorinaTop.Server\\appsettings.json",
-              "ToolTip": "D:\\Programming\\VictorinaTop\\VictorinaTop.Server\\VictorinaTop.Server\\appsettings.json",
-              "RelativeToolTip": "VictorinaTop.Server\\appsettings.json",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAABQAAAAqAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2026-06-08T10:13:50.667Z"
             },
             {
               "$type": "Document",

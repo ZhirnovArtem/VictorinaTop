@@ -68,6 +68,52 @@ public class AuthController : ControllerBase
         public string? Error { get; set; }
     }
 
+    public class ForgotPasswordRequest
+    {
+        public string Email { get; set; } = string.Empty;
+    }
+
+    public class ResetPasswordRequest
+    {
+        public string Email { get; set; } = string.Empty;
+        public string Code { get; set; } = string.Empty;
+        public string NewPassword { get; set; } = string.Empty;
+    }
+
+    [HttpPost("forgot-password")]
+    public async Task<IActionResult> ForgotPassword([FromBody] ForgotPasswordRequest request)
+    {
+        var user = await _db.Users.FirstOrDefaultAsync(u => u.Email == request.Email);
+        if (user == null)
+            return Ok(new { success = false, error = "Email не найден" });
+
+        var code = _verification.GenerateCode();
+        await _verification.SaveCode(request.Email, code, "reset");
+        await _email.SendCode(request.Email, code);
+
+        return Ok(new { success = true });
+    }
+
+    [HttpPost("reset-password")]
+    public async Task<IActionResult> ResetPassword([FromBody] ResetPasswordRequest request)
+    {
+        var isValid = await _verification.VerifyCode(request.Email, request.Code, "reset");
+        if (!isValid)
+            return BadRequest(new { success = false, error = "Неверный или истёкший код" });
+
+        var user = await _db.Users.FirstOrDefaultAsync(u => u.Email == request.Email);
+        if (user == null)
+            return BadRequest(new { success = false, error = "Пользователь не найден" });
+
+        if (request.NewPassword.Length < 4)
+            return BadRequest(new { success = false, error = "Пароль должен быть не менее 4 символов" });
+
+        user.PasswordHash = _hasher.Hash(request.NewPassword);
+        await _db.SaveChangesAsync();
+
+        return Ok(new { success = true });
+    }
+
     [HttpPost("register")]
     public async Task<IActionResult> Register([FromBody] RegisterRequest request)
     {

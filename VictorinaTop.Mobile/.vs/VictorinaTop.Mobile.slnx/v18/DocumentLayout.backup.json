@@ -3,24 +3,40 @@
   "WorkspaceRootPath": "D:\\Programming\\VictorinaTop\\VictorinaTop.Mobile\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{C65E7CB0-23C0-AE13-895A-9226463551CA}|VictorinaTop.Mobile\\VictorinaTop.Mobile.csproj|d:\\programming\\victorinatop\\victorinatop.mobile\\victorinatop.mobile\\views\\gamepage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C65E7CB0-23C0-AE13-895A-9226463551CA}|VictorinaTop.Mobile\\VictorinaTop.Mobile.csproj|solutionrelative:victorinatop.mobile\\views\\gamepage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C65E7CB0-23C0-AE13-895A-9226463551CA}|VictorinaTop.Mobile\\VictorinaTop.Mobile.csproj|d:\\programming\\victorinatop\\victorinatop.mobile\\victorinatop.mobile\\views\\enteringpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C65E7CB0-23C0-AE13-895A-9226463551CA}|VictorinaTop.Mobile\\VictorinaTop.Mobile.csproj|solutionrelative:victorinatop.mobile\\views\\enteringpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C65E7CB0-23C0-AE13-895A-9226463551CA}|VictorinaTop.Mobile\\VictorinaTop.Mobile.csproj|d:\\programming\\victorinatop\\victorinatop.mobile\\victorinatop.mobile\\views\\resetpasswordpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C65E7CB0-23C0-AE13-895A-9226463551CA}|VictorinaTop.Mobile\\VictorinaTop.Mobile.csproj|solutionrelative:victorinatop.mobile\\views\\resetpasswordpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C65E7CB0-23C0-AE13-895A-9226463551CA}|VictorinaTop.Mobile\\VictorinaTop.Mobile.csproj|d:\\programming\\victorinatop\\victorinatop.mobile\\victorinatop.mobile\\services\\apiservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C65E7CB0-23C0-AE13-895A-9226463551CA}|VictorinaTop.Mobile\\VictorinaTop.Mobile.csproj|solutionrelative:victorinatop.mobile\\services\\apiservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C65E7CB0-23C0-AE13-895A-9226463551CA}|VictorinaTop.Mobile\\VictorinaTop.Mobile.csproj|d:\\programming\\victorinatop\\victorinatop.mobile\\victorinatop.mobile\\views\\registrationpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C65E7CB0-23C0-AE13-895A-9226463551CA}|VictorinaTop.Mobile\\VictorinaTop.Mobile.csproj|solutionrelative:victorinatop.mobile\\views\\registrationpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C65E7CB0-23C0-AE13-895A-9226463551CA}|VictorinaTop.Mobile\\VictorinaTop.Mobile.csproj|d:\\programming\\victorinatop\\victorinatop.mobile\\victorinatop.mobile\\views\\menupage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C65E7CB0-23C0-AE13-895A-9226463551CA}|VictorinaTop.Mobile\\VictorinaTop.Mobile.csproj|solutionrelative:victorinatop.mobile\\views\\menupage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{C65E7CB0-23C0-AE13-895A-9226463551CA}|VictorinaTop.Mobile\\VictorinaTop.Mobile.csproj|d:\\programming\\victorinatop\\victorinatop.mobile\\victorinatop.mobile\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C65E7CB0-23C0-AE13-895A-9226463551CA}|VictorinaTop.Mobile\\VictorinaTop.Mobile.csproj|solutionrelative:victorinatop.mobile\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{C65E7CB0-23C0-AE13-895A-9226463551CA}|VictorinaTop.Mobile\\VictorinaTop.Mobile.csproj|d:\\programming\\victorinatop\\victorinatop.mobile\\victorinatop.mobile\\views\\mainpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C65E7CB0-23C0-AE13-895A-9226463551CA}|VictorinaTop.Mobile\\VictorinaTop.Mobile.csproj|solutionrelative:victorinatop.mobile\\views\\mainpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C65E7CB0-23C0-AE13-895A-9226463551CA}|VictorinaTop.Mobile\\VictorinaTop.Mobile.csproj|d:\\programming\\victorinatop\\victorinatop.mobile\\victorinatop.mobile\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C65E7CB0-23C0-AE13-895A-9226463551CA}|VictorinaTop.Mobile\\VictorinaTop.Mobile.csproj|solutionrelative:victorinatop.mobile\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C65E7CB0-23C0-AE13-895A-9226463551CA}|VictorinaTop.Mobile\\VictorinaTop.Mobile.csproj|d:\\programming\\victorinatop\\victorinatop.mobile\\victorinatop.mobile\\views\\gamepage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C65E7CB0-23C0-AE13-895A-9226463551CA}|VictorinaTop.Mobile\\VictorinaTop.Mobile.csproj|solutionrelative:victorinatop.mobile\\views\\gamepage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C65E7CB0-23C0-AE13-895A-9226463551CA}|VictorinaTop.Mobile\\VictorinaTop.Mobile.csproj|d:\\programming\\victorinatop\\victorinatop.mobile\\victorinatop.mobile\\services\\apiservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C65E7CB0-23C0-AE13-895A-9226463551CA}|VictorinaTop.Mobile\\VictorinaTop.Mobile.csproj|solutionrelative:victorinatop.mobile\\services\\apiservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C65E7CB0-23C0-AE13-895A-9226463551CA}|VictorinaTop.Mobile\\VictorinaTop.Mobile.csproj|d:\\programming\\victorinatop\\victorinatop.mobile\\victorinatop.mobile\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C65E7CB0-23C0-AE13-895A-9226463551CA}|VictorinaTop.Mobile\\VictorinaTop.Mobile.csproj|solutionrelative:victorinatop.mobile\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C65E7CB0-23C0-AE13-895A-9226463551CA}|VictorinaTop.Mobile\\VictorinaTop.Mobile.csproj|d:\\programming\\victorinatop\\victorinatop.mobile\\victorinatop.mobile\\services\\localdatabaseservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -31,20 +47,8 @@
       "RelativeMoniker": "D:0:0:{C65E7CB0-23C0-AE13-895A-9226463551CA}|VictorinaTop.Mobile\\VictorinaTop.Mobile.csproj|solutionrelative:victorinatop.mobile\\views\\errorpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C65E7CB0-23C0-AE13-895A-9226463551CA}|VictorinaTop.Mobile\\VictorinaTop.Mobile.csproj|d:\\programming\\victorinatop\\victorinatop.mobile\\victorinatop.mobile\\views\\enteringpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C65E7CB0-23C0-AE13-895A-9226463551CA}|VictorinaTop.Mobile\\VictorinaTop.Mobile.csproj|solutionrelative:victorinatop.mobile\\views\\enteringpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C65E7CB0-23C0-AE13-895A-9226463551CA}|VictorinaTop.Mobile\\VictorinaTop.Mobile.csproj|d:\\programming\\victorinatop\\victorinatop.mobile\\victorinatop.mobile\\views\\registrationpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C65E7CB0-23C0-AE13-895A-9226463551CA}|VictorinaTop.Mobile\\VictorinaTop.Mobile.csproj|solutionrelative:victorinatop.mobile\\views\\registrationpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{C65E7CB0-23C0-AE13-895A-9226463551CA}|VictorinaTop.Mobile\\VictorinaTop.Mobile.csproj|d:\\programming\\victorinatop\\victorinatop.mobile\\victorinatop.mobile\\views\\emailverificationpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C65E7CB0-23C0-AE13-895A-9226463551CA}|VictorinaTop.Mobile\\VictorinaTop.Mobile.csproj|solutionrelative:victorinatop.mobile\\views\\emailverificationpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C65E7CB0-23C0-AE13-895A-9226463551CA}|VictorinaTop.Mobile\\VictorinaTop.Mobile.csproj|d:\\programming\\victorinatop\\victorinatop.mobile\\victorinatop.mobile\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C65E7CB0-23C0-AE13-895A-9226463551CA}|VictorinaTop.Mobile\\VictorinaTop.Mobile.csproj|solutionrelative:victorinatop.mobile\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C65E7CB0-23C0-AE13-895A-9226463551CA}|VictorinaTop.Mobile\\VictorinaTop.Mobile.csproj|d:\\programming\\victorinatop\\victorinatop.mobile\\victorinatop.mobile\\views\\creategamepage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -78,74 +82,24 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "LocalDatabaseService.cs",
-              "DocumentMoniker": "D:\\Programming\\VictorinaTop\\VictorinaTop.Mobile\\VictorinaTop.Mobile\\Services\\LocalDatabaseService.cs",
-              "RelativeDocumentMoniker": "VictorinaTop.Mobile\\Services\\LocalDatabaseService.cs",
-              "ToolTip": "D:\\Programming\\VictorinaTop\\VictorinaTop.Mobile\\VictorinaTop.Mobile\\Services\\LocalDatabaseService.cs",
-              "RelativeToolTip": "VictorinaTop.Mobile\\Services\\LocalDatabaseService.cs",
-              "ViewState": "AgIAAHMAAAAAAAAAAAAUwIsAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-15T06:53:14.103Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "User.cs",
-              "DocumentMoniker": "D:\\Programming\\VictorinaTop\\VictorinaTop.Mobile\\VictorinaTop.Mobile\\Models\\User.cs",
-              "RelativeDocumentMoniker": "VictorinaTop.Mobile\\Models\\User.cs",
-              "ToolTip": "D:\\Programming\\VictorinaTop\\VictorinaTop.Mobile\\VictorinaTop.Mobile\\Models\\User.cs",
-              "RelativeToolTip": "VictorinaTop.Mobile\\Models\\User.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-15T06:40:19.743Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "CreateGamePage.xaml.cs",
-              "DocumentMoniker": "D:\\Programming\\VictorinaTop\\VictorinaTop.Mobile\\VictorinaTop.Mobile\\Views\\CreateGamePage.xaml.cs",
-              "RelativeDocumentMoniker": "VictorinaTop.Mobile\\Views\\CreateGamePage.xaml.cs",
-              "ToolTip": "D:\\Programming\\VictorinaTop\\VictorinaTop.Mobile\\VictorinaTop.Mobile\\Views\\CreateGamePage.xaml.cs",
-              "RelativeToolTip": "VictorinaTop.Mobile\\Views\\CreateGamePage.xaml.cs",
-              "ViewState": "AgIAAFMBAAAAAAAAAADwv2kBAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-15T06:45:12.67Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "ErrorPage.xaml.cs",
-              "DocumentMoniker": "D:\\Programming\\VictorinaTop\\VictorinaTop.Mobile\\VictorinaTop.Mobile\\Views\\ErrorPage.xaml.cs",
-              "RelativeDocumentMoniker": "VictorinaTop.Mobile\\Views\\ErrorPage.xaml.cs",
-              "ToolTip": "D:\\Programming\\VictorinaTop\\VictorinaTop.Mobile\\VictorinaTop.Mobile\\Views\\ErrorPage.xaml.cs",
-              "RelativeToolTip": "VictorinaTop.Mobile\\Views\\ErrorPage.xaml.cs",
-              "ViewState": "AgIAAIcAAAAAAAAAAAAEwJQAAAA1AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-15T06:40:05.183Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "GamePage.xaml.cs",
-              "DocumentMoniker": "D:\\Programming\\VictorinaTop\\VictorinaTop.Mobile\\VictorinaTop.Mobile\\Views\\GamePage.xaml.cs",
-              "RelativeDocumentMoniker": "VictorinaTop.Mobile\\Views\\GamePage.xaml.cs",
-              "ToolTip": "D:\\Programming\\VictorinaTop\\VictorinaTop.Mobile\\VictorinaTop.Mobile\\Views\\GamePage.xaml.cs",
-              "RelativeToolTip": "VictorinaTop.Mobile\\Views\\GamePage.xaml.cs",
-              "ViewState": "AgIAAMkAAAAAAAAAAAAEwNsAAAAeAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-15T06:44:41.948Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "ResetPasswordPage.xaml.cs",
+              "DocumentMoniker": "D:\\Programming\\VictorinaTop\\VictorinaTop.Mobile\\VictorinaTop.Mobile\\Views\\ResetPasswordPage.xaml.cs",
+              "RelativeDocumentMoniker": "VictorinaTop.Mobile\\Views\\ResetPasswordPage.xaml.cs",
+              "ToolTip": "D:\\Programming\\VictorinaTop\\VictorinaTop.Mobile\\VictorinaTop.Mobile\\Views\\ResetPasswordPage.xaml.cs",
+              "RelativeToolTip": "VictorinaTop.Mobile\\Views\\ResetPasswordPage.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAIUAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-17T06:56:17.666Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "MenuPage.xaml.cs",
               "DocumentMoniker": "D:\\Programming\\VictorinaTop\\VictorinaTop.Mobile\\VictorinaTop.Mobile\\Views\\MenuPage.xaml.cs",
               "RelativeDocumentMoniker": "VictorinaTop.Mobile\\Views\\MenuPage.xaml.cs",
@@ -158,20 +112,133 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
+              "Title": "App.xaml.cs",
+              "DocumentMoniker": "D:\\Programming\\VictorinaTop\\VictorinaTop.Mobile\\VictorinaTop.Mobile\\App.xaml.cs",
+              "RelativeDocumentMoniker": "VictorinaTop.Mobile\\App.xaml.cs",
+              "ToolTip": "D:\\Programming\\VictorinaTop\\VictorinaTop.Mobile\\VictorinaTop.Mobile\\App.xaml.cs",
+              "RelativeToolTip": "VictorinaTop.Mobile\\App.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACUAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-15T06:41:34.407Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "MainPage.xaml.cs",
               "DocumentMoniker": "D:\\Programming\\VictorinaTop\\VictorinaTop.Mobile\\VictorinaTop.Mobile\\Views\\MainPage.xaml.cs",
               "RelativeDocumentMoniker": "VictorinaTop.Mobile\\Views\\MainPage.xaml.cs",
               "ToolTip": "D:\\Programming\\VictorinaTop\\VictorinaTop.Mobile\\VictorinaTop.Mobile\\Views\\MainPage.xaml.cs",
               "RelativeToolTip": "VictorinaTop.Mobile\\Views\\MainPage.xaml.cs",
-              "ViewState": "AgIAADkAAAAAAAAAAAAUwFEAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAADsAAAAAAAAAAADwv1EAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-06-15T06:42:24.149Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "RegistrationPage.xaml.cs",
+              "DocumentMoniker": "D:\\Programming\\VictorinaTop\\VictorinaTop.Mobile\\VictorinaTop.Mobile\\Views\\RegistrationPage.xaml.cs",
+              "RelativeDocumentMoniker": "VictorinaTop.Mobile\\Views\\RegistrationPage.xaml.cs",
+              "ToolTip": "D:\\Programming\\VictorinaTop\\VictorinaTop.Mobile\\VictorinaTop.Mobile\\Views\\RegistrationPage.xaml.cs",
+              "RelativeToolTip": "VictorinaTop.Mobile\\Views\\RegistrationPage.xaml.cs",
+              "ViewState": "AgIAAJIAAAAAAAAAAAAIwKkAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-15T06:42:57.782Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "EnteringPage.xaml.cs",
+              "DocumentMoniker": "D:\\Programming\\VictorinaTop\\VictorinaTop.Mobile\\VictorinaTop.Mobile\\Views\\EnteringPage.xaml.cs",
+              "RelativeDocumentMoniker": "VictorinaTop.Mobile\\Views\\EnteringPage.xaml.cs",
+              "ToolTip": "D:\\Programming\\VictorinaTop\\VictorinaTop.Mobile\\VictorinaTop.Mobile\\Views\\EnteringPage.xaml.cs",
+              "RelativeToolTip": "VictorinaTop.Mobile\\Views\\EnteringPage.xaml.cs",
+              "ViewState": "AgIAAJMAAAAAAAAAAAAEwJwAAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-15T06:42:39.524Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "GamePage.xaml.cs",
+              "DocumentMoniker": "D:\\Programming\\VictorinaTop\\VictorinaTop.Mobile\\VictorinaTop.Mobile\\Views\\GamePage.xaml.cs",
+              "RelativeDocumentMoniker": "VictorinaTop.Mobile\\Views\\GamePage.xaml.cs",
+              "ToolTip": "D:\\Programming\\VictorinaTop\\VictorinaTop.Mobile\\VictorinaTop.Mobile\\Views\\GamePage.xaml.cs",
+              "RelativeToolTip": "VictorinaTop.Mobile\\Views\\GamePage.xaml.cs",
+              "ViewState": "AgIAAMMAAAAAAAAAAAAEwM0AAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-15T06:44:41.948Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ApiService.cs",
+              "DocumentMoniker": "D:\\Programming\\VictorinaTop\\VictorinaTop.Mobile\\VictorinaTop.Mobile\\Services\\ApiService.cs",
+              "RelativeDocumentMoniker": "VictorinaTop.Mobile\\Services\\ApiService.cs",
+              "ToolTip": "D:\\Programming\\VictorinaTop\\VictorinaTop.Mobile\\VictorinaTop.Mobile\\Services\\ApiService.cs",
+              "RelativeToolTip": "VictorinaTop.Mobile\\Services\\ApiService.cs",
+              "ViewState": "AgIAAAMBAAAAAAAAAAAswC0BAABwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-15T06:41:52.471Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "ErrorPage.xaml.cs",
+              "DocumentMoniker": "D:\\Programming\\VictorinaTop\\VictorinaTop.Mobile\\VictorinaTop.Mobile\\Views\\ErrorPage.xaml.cs",
+              "RelativeDocumentMoniker": "VictorinaTop.Mobile\\Views\\ErrorPage.xaml.cs",
+              "ToolTip": "D:\\Programming\\VictorinaTop\\VictorinaTop.Mobile\\VictorinaTop.Mobile\\Views\\ErrorPage.xaml.cs",
+              "RelativeToolTip": "VictorinaTop.Mobile\\Views\\ErrorPage.xaml.cs",
+              "ViewState": "AgIAAIcAAAAAAAAAAAAEwJQAAAA1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-15T06:40:05.183Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "CreateGamePage.xaml.cs",
+              "DocumentMoniker": "D:\\Programming\\VictorinaTop\\VictorinaTop.Mobile\\VictorinaTop.Mobile\\Views\\CreateGamePage.xaml.cs",
+              "RelativeDocumentMoniker": "VictorinaTop.Mobile\\Views\\CreateGamePage.xaml.cs",
+              "ToolTip": "D:\\Programming\\VictorinaTop\\VictorinaTop.Mobile\\VictorinaTop.Mobile\\Views\\CreateGamePage.xaml.cs",
+              "RelativeToolTip": "VictorinaTop.Mobile\\Views\\CreateGamePage.xaml.cs",
+              "ViewState": "AgIAAFMBAAAAAAAAAADwv2kBAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-15T06:45:12.67Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "User.cs",
+              "DocumentMoniker": "D:\\Programming\\VictorinaTop\\VictorinaTop.Mobile\\VictorinaTop.Mobile\\Models\\User.cs",
+              "RelativeDocumentMoniker": "VictorinaTop.Mobile\\Models\\User.cs",
+              "ToolTip": "D:\\Programming\\VictorinaTop\\VictorinaTop.Mobile\\VictorinaTop.Mobile\\Models\\User.cs",
+              "RelativeToolTip": "VictorinaTop.Mobile\\Models\\User.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-15T06:40:19.743Z"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 9,
+              "Title": "LocalDatabaseService.cs",
+              "DocumentMoniker": "D:\\Programming\\VictorinaTop\\VictorinaTop.Mobile\\VictorinaTop.Mobile\\Services\\LocalDatabaseService.cs",
+              "RelativeDocumentMoniker": "VictorinaTop.Mobile\\Services\\LocalDatabaseService.cs",
+              "ToolTip": "D:\\Programming\\VictorinaTop\\VictorinaTop.Mobile\\VictorinaTop.Mobile\\Services\\LocalDatabaseService.cs",
+              "RelativeToolTip": "VictorinaTop.Mobile\\Services\\LocalDatabaseService.cs",
+              "ViewState": "AgIAAHMAAAAAAAAAAAAUwIsAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-15T06:53:14.103Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
               "Title": "EmailVerificationPage.xaml.cs",
               "DocumentMoniker": "D:\\Programming\\VictorinaTop\\VictorinaTop.Mobile\\VictorinaTop.Mobile\\Views\\EmailVerificationPage.xaml.cs",
               "RelativeDocumentMoniker": "VictorinaTop.Mobile\\Views\\EmailVerificationPage.xaml.cs",
@@ -183,56 +250,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "ApiService.cs",
-              "DocumentMoniker": "D:\\Programming\\VictorinaTop\\VictorinaTop.Mobile\\VictorinaTop.Mobile\\Services\\ApiService.cs",
-              "RelativeDocumentMoniker": "VictorinaTop.Mobile\\Services\\ApiService.cs",
-              "ToolTip": "D:\\Programming\\VictorinaTop\\VictorinaTop.Mobile\\VictorinaTop.Mobile\\Services\\ApiService.cs",
-              "RelativeToolTip": "VictorinaTop.Mobile\\Services\\ApiService.cs",
-              "ViewState": "AgIAAPwAAAAAAAAAAAAswBEBAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-15T06:41:52.471Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "RegistrationPage.xaml.cs",
-              "DocumentMoniker": "D:\\Programming\\VictorinaTop\\VictorinaTop.Mobile\\VictorinaTop.Mobile\\Views\\RegistrationPage.xaml.cs",
-              "RelativeDocumentMoniker": "VictorinaTop.Mobile\\Views\\RegistrationPage.xaml.cs",
-              "ToolTip": "D:\\Programming\\VictorinaTop\\VictorinaTop.Mobile\\VictorinaTop.Mobile\\Views\\RegistrationPage.xaml.cs",
-              "RelativeToolTip": "VictorinaTop.Mobile\\Views\\RegistrationPage.xaml.cs",
-              "ViewState": "AgIAAJIAAAAAAAAAAAAIwKkAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-15T06:42:57.782Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "EnteringPage.xaml.cs",
-              "DocumentMoniker": "D:\\Programming\\VictorinaTop\\VictorinaTop.Mobile\\VictorinaTop.Mobile\\Views\\EnteringPage.xaml.cs",
-              "RelativeDocumentMoniker": "VictorinaTop.Mobile\\Views\\EnteringPage.xaml.cs",
-              "ToolTip": "D:\\Programming\\VictorinaTop\\VictorinaTop.Mobile\\VictorinaTop.Mobile\\Views\\EnteringPage.xaml.cs",
-              "RelativeToolTip": "VictorinaTop.Mobile\\Views\\EnteringPage.xaml.cs",
-              "ViewState": "AgIAAIwAAAAAAAAAAADwv6IAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-15T06:42:39.524Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "App.xaml.cs",
-              "DocumentMoniker": "D:\\Programming\\VictorinaTop\\VictorinaTop.Mobile\\VictorinaTop.Mobile\\App.xaml.cs",
-              "RelativeDocumentMoniker": "VictorinaTop.Mobile\\App.xaml.cs",
-              "ToolTip": "D:\\Programming\\VictorinaTop\\VictorinaTop.Mobile\\VictorinaTop.Mobile\\App.xaml.cs",
-              "RelativeToolTip": "VictorinaTop.Mobile\\App.xaml.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAUwA8AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-15T06:41:34.407Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 13,
               "Title": "MauiProgram.cs",
               "DocumentMoniker": "D:\\Programming\\VictorinaTop\\VictorinaTop.Mobile\\VictorinaTop.Mobile\\MauiProgram.cs",
               "RelativeDocumentMoniker": "VictorinaTop.Mobile\\MauiProgram.cs",
@@ -244,7 +262,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 14,
               "Title": "AppShell.xaml.cs",
               "DocumentMoniker": "D:\\Programming\\VictorinaTop\\VictorinaTop.Mobile\\VictorinaTop.Mobile\\AppShell.xaml.cs",
               "RelativeDocumentMoniker": "VictorinaTop.Mobile\\AppShell.xaml.cs",
@@ -256,7 +274,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 15,
               "Title": "PreferencesService.cs",
               "DocumentMoniker": "D:\\Programming\\VictorinaTop\\VictorinaTop.Mobile\\VictorinaTop.Mobile\\Services\\PreferencesService.cs",
               "RelativeDocumentMoniker": "VictorinaTop.Mobile\\Services\\PreferencesService.cs",
@@ -268,7 +286,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 16,
               "Title": "AndroidManifest.xml",
               "DocumentMoniker": "D:\\Programming\\VictorinaTop\\VictorinaTop.Mobile\\VictorinaTop.Mobile\\Platforms\\Android\\AndroidManifest.xml",
               "RelativeDocumentMoniker": "VictorinaTop.Mobile\\Platforms\\Android\\AndroidManifest.xml",
@@ -280,7 +298,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 17,
               "Title": "MainActivity.cs",
               "DocumentMoniker": "D:\\Programming\\VictorinaTop\\VictorinaTop.Mobile\\VictorinaTop.Mobile\\Platforms\\Android\\MainActivity.cs",
               "RelativeDocumentMoniker": "VictorinaTop.Mobile\\Platforms\\Android\\MainActivity.cs",

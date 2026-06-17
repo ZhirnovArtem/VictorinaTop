@@ -150,9 +150,17 @@ public class EnteringPage : ContentPage
         var email = await DisplayPromptAsync("Восстановление пароля",
             "Введите ваш email:", "Отправить", "Отмена", keyboard: Keyboard.Email);
 
-        if (!string.IsNullOrEmpty(email))
+        if (string.IsNullOrEmpty(email)) return;
+
+        var (success, error) = await _api.ForgotPassword(email);
+
+        if (success)
         {
-            await DisplayAlert("Информация", "Код отправлен на email", "OK");
+            await Navigation.PushAsync(new ResetPasswordPage(_api, email));
+        }
+        else
+        {
+            await DisplayAlert("Ошибка", string.IsNullOrEmpty(error) ? "Email не найден" : error, "OK");
         }
     }
 

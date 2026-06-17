@@ -268,6 +268,38 @@ public class ApiService
         }
     }
 
+    public async Task<(bool success, string error)> ForgotPassword(string email)
+    {
+        try
+        {
+            var response = await _http.PostAsJsonAsync("auth/forgot-password", new { email });
+            var result = await response.Content.ReadFromJsonAsync<ForgotPasswordResponse>();
+            return (result?.success == true, result?.error ?? "");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"[ForgotPassword] {ex.Message}");
+            return (false, "Ошибка соединения");
+        }
+    }
+
+    public async Task<(bool success, string error)> ResetPassword(string email, string code, string newPassword)
+    {
+        try
+        {
+            var response = await _http.PostAsJsonAsync("auth/reset-password", new { email, code, newPassword });
+            var result = await response.Content.ReadFromJsonAsync<ResetPasswordResponse>();
+            return (result?.success == true, result?.error ?? "");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"[ResetPassword] {ex.Message}");
+            return (false, "Ошибка соединения");
+        }
+    }
+
+    private class ForgotPasswordResponse { public bool success { get; set; } public string? error { get; set; } }
+    private class ResetPasswordResponse { public bool success { get; set; } public string? error { get; set; } }
     private class RegisterResponse { public bool success { get; set; } public string? error { get; set; } public bool requiresVerification { get; set; } }
     private class VerifyResponse { public bool success { get; set; } public string? token { get; set; } public string? login { get; set; } public int maxScore { get; set; } }
     private class LoginResponse { public bool success { get; set; } public string? token { get; set; } public string? login { get; set; } public int maxScore { get; set; } public string? error { get; set; } }
