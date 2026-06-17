@@ -1,8 +1,10 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Security.Claims;          // ← добавить
 using VictorinaTop.Server.Data;
 using VictorinaTop.Server.Models;
+
 namespace VictorinaTop.Server.Controllers;
 
 [ApiController]
@@ -19,22 +21,27 @@ public class ScoresController : ControllerBase
 
     public class SubmitScoreRequest
     {
-        public string ThemeName { get; set; } = string.Empty;
+        public int ThemeId { get; set; }
         public int Points { get; set; }
     }
 
     [HttpPost]
     public async Task<IActionResult> SubmitScore([FromBody] SubmitScoreRequest request)
     {
-        var userId = int.Parse(User.Identity!.Name!);
-        var user = await _db.Users.FindAsync(userId);
-        if (user == null)
+        // Получаем userId из JWT-токена
+        var userIdStr = User.FindFirstValue(ClaimTypes.NameIdentifier);
+        if (!int.TryParse(userIdStr, out var userId))
             return Unauthorized();
+
+        var user = await _db.Users.FindAsync(userId);
+        if (user == null) return Unauthorized();
+
+        var theme = await _db.Themes.FindAsync(request.ThemeId);
 
         var score = new Score
         {
             UserId = userId,
-            ThemeName = request.ThemeName,
+            ThemeName = theme?.Name ?? "",
             Points = request.Points,
             AchievedAt = DateTime.UtcNow
         };

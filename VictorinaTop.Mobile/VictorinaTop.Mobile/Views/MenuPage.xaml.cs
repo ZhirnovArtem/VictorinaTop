@@ -13,12 +13,12 @@ public class MenuPage : ContentPage
     private CollectionView _topPlayersList;
     private Label _emptyLabel;
 
-    public MenuPage() : this(false) { }
+    public MenuPage(ApiService api, PreferencesService prefs) : this(false, api, prefs) { }
 
-    public MenuPage(bool isOfflineMode)
+    public MenuPage(bool isOfflineMode, ApiService api, PreferencesService prefs)
     {
-        _prefs = new PreferencesService();
-        _api = new ApiService(_prefs);
+        _api = api;
+        _prefs = prefs;
         _cache = new LocalDatabaseService();
         _isOfflineMode = isOfflineMode;
 
@@ -26,7 +26,7 @@ public class MenuPage : ContentPage
         BackgroundColor = Color.FromArgb("#1A1A2E");
 
         BuildUI();
-        _ = LoadDataAsync(); 
+        _ = LoadDataAsync();
     }
 
     protected override async void OnAppearing()
@@ -37,7 +37,6 @@ public class MenuPage : ContentPage
 
     private void BuildUI()
     {
-        // ТОП-3 блок
         var topPlayersTitle = new Label
         {
             Text = "🏆 ТОП-3 ИГРОКОВ 🏆",
@@ -54,18 +53,14 @@ public class MenuPage : ContentPage
         };
         _topPlayersList.ItemTemplate = new DataTemplate(() =>
         {
-            var idLabel = new Label();
-            idLabel.SetBinding(Label.TextProperty, "Id");
-            idLabel.TextColor = Color.FromArgb("#FFD700");
+            var rankLabel = new Label { TextColor = Color.FromArgb("#FFD700") };
+            rankLabel.SetBinding(Label.TextProperty, "Rank");
 
-            var loginLabel = new Label();
+            var loginLabel = new Label { TextColor = Colors.White, Margin = new Thickness(10, 0) };
             loginLabel.SetBinding(Label.TextProperty, "Login");
-            loginLabel.TextColor = Colors.White;
-            loginLabel.Margin = new Thickness(10, 0);
 
-            var scoreLabel = new Label();
+            var scoreLabel = new Label { TextColor = Color.FromArgb("#50C878") };
             scoreLabel.SetBinding(Label.TextProperty, "MaxScore");
-            scoreLabel.TextColor = Color.FromArgb("#50C878");
 
             var grid = new Grid
             {
@@ -77,11 +72,11 @@ public class MenuPage : ContentPage
                     new ColumnDefinition { Width = GridLength.Auto }
                 }
             };
-            grid.Add(idLabel, 0, 0);
+            grid.Add(rankLabel, 0, 0);
             grid.Add(loginLabel, 1, 0);
             grid.Add(scoreLabel, 2, 0);
 
-            return new Frame { Content = grid, HasShadow = false };
+            return new Frame { Content = grid, HasShadow = false, BackgroundColor = Color.FromArgb("#16213E"), Padding = 0 };
         });
 
         var topPlayersFrame = new Frame
@@ -93,7 +88,12 @@ public class MenuPage : ContentPage
             HasShadow = false,
             Content = new VerticalStackLayout
             {
-                Children = { topPlayersTitle, new BoxView { HeightRequest = 2, BackgroundColor = Color.FromArgb("#FFD700"), Margin = new Thickness(0, 10) }, _topPlayersList }
+                Children =
+                {
+                    topPlayersTitle,
+                    new BoxView { HeightRequest = 2, BackgroundColor = Color.FromArgb("#FFD700"), Margin = new Thickness(0, 10) },
+                    _topPlayersList
+                }
             }
         };
 
@@ -121,16 +121,11 @@ public class MenuPage : ContentPage
                 VerticalOptions = LayoutOptions.Center
             };
 
-            var nameLabel = new Label();
+            var nameLabel = new Label { TextColor = Colors.White, FontSize = 16, FontAttributes = FontAttributes.Bold };
             nameLabel.SetBinding(Label.TextProperty, "Name");
-            nameLabel.TextColor = Colors.White;
-            nameLabel.FontSize = 16;
-            nameLabel.FontAttributes = FontAttributes.Bold;
 
-            var authorLabel = new Label();
+            var authorLabel = new Label { TextColor = Color.FromArgb("#888888"), FontSize = 11 };
             authorLabel.SetBinding(Label.TextProperty, "AuthorDisplay");
-            authorLabel.TextColor = Color.FromArgb("#888888");
-            authorLabel.FontSize = 11;
 
             var playButton = new Button
             {
@@ -154,7 +149,7 @@ public class MenuPage : ContentPage
                 else
                     _cache.CacheQuestions(theme.Id, questions);
 
-                await Navigation.PushAsync(new GamePage(theme.Name, questions, theme.Id));
+                await Navigation.PushAsync(new GamePage(theme.Name, questions, theme.Id, _api, _prefs));
             };
 
             var infoLayout = new VerticalStackLayout
@@ -180,7 +175,7 @@ public class MenuPage : ContentPage
 
             return new Frame
             {
-                BackgroundColor = Color.FromArgb("#2D2D44"),
+                BackgroundColor = Color.FromArgb("#16213E"),
                 CornerRadius = 10,
                 HasShadow = false,
                 Margin = new Thickness(0, 5),
@@ -197,11 +192,6 @@ public class MenuPage : ContentPage
             IsVisible = false
         };
 
-        var themesLayout = new VerticalStackLayout
-        {
-            Children = { themesTitle, new BoxView { HeightRequest = 2, BackgroundColor = Color.FromArgb("#FFD700"), Margin = new Thickness(0, 10) }, _themesList, _emptyLabel }
-        };
-
         var themesFrame = new Frame
         {
             BackgroundColor = Color.FromArgb("#16213E"),
@@ -209,7 +199,16 @@ public class MenuPage : ContentPage
             Padding = 15,
             CornerRadius = 15,
             HasShadow = false,
-            Content = themesLayout
+            Content = new VerticalStackLayout
+            {
+                Children =
+                {
+                    themesTitle,
+                    new BoxView { HeightRequest = 2, BackgroundColor = Color.FromArgb("#FFD700"), Margin = new Thickness(0, 10) },
+                    _themesList,
+                    _emptyLabel
+                }
+            }
         };
 
         var createButton = new Button
@@ -236,14 +235,7 @@ public class MenuPage : ContentPage
         };
         logoutButton.Clicked += OnLogoutClicked;
 
-        var buttonsLayout = new VerticalStackLayout
-        {
-            Spacing = 15,
-            Padding = new Thickness(30),
-            Children = { createButton, logoutButton }
-        };
-
-        var grid = new Grid
+        var pageGrid = new Grid
         {
             RowDefinitions =
             {
@@ -252,28 +244,37 @@ public class MenuPage : ContentPage
                 new RowDefinition { Height = GridLength.Star }
             }
         };
-        grid.Add(topPlayersFrame, 0, 0);
-        grid.Add(themesFrame, 0, 1);
-        grid.Add(buttonsLayout, 0, 2);
+        pageGrid.Add(topPlayersFrame, 0, 0);
+        pageGrid.Add(themesFrame, 0, 1);
+        pageGrid.Add(new VerticalStackLayout
+        {
+            Spacing = 15,
+            Padding = new Thickness(30),
+            Children = { createButton, logoutButton }
+        }, 0, 2);
 
-        Content = grid;
+        Content = pageGrid;
     }
 
     private async Task LoadDataAsync()
     {
+        System.Diagnostics.Debug.WriteLine("[MenuPage] LoadDataAsync start");
         await LoadTopPlayers();
+        System.Diagnostics.Debug.WriteLine("[MenuPage] LoadTopPlayers done");
         await LoadThemes();
-    }
-
-    private void LoadData()
-    {
-        _ = LoadDataAsync();  
+        System.Diagnostics.Debug.WriteLine("[MenuPage] LoadThemes done");
     }
 
     private async Task LoadTopPlayers()
     {
         var topPlayers = await _api.GetLeaderboard(3);
-        _topPlayersList.ItemsSource = topPlayers;
+        var ranked = topPlayers.Select((p, i) => new
+        {
+            Rank = $"#{i + 1}",
+            p.Login,
+            p.MaxScore
+        }).ToList();
+        _topPlayersList.ItemsSource = ranked;
     }
 
     private async Task LoadThemes()
@@ -310,20 +311,16 @@ public class MenuPage : ContentPage
         var questions = await _api.GetQuestions(theme.Id);
 
         if (questions.Count == 0)
-        {
             questions = _cache.GetCachedQuestions(theme.Id);
-        }
         else
-        {
             _cache.CacheQuestions(theme.Id, questions);
-        }
 
-        await Navigation.PushAsync(new GamePage(theme.Name, questions, theme.Id));
+        await Navigation.PushAsync(new GamePage(theme.Name, questions, theme.Id, _api, _prefs));
     }
 
     private async void OnCreateClicked(object sender, EventArgs e)
     {
-        await Navigation.PushAsync(new CreateGamePage());
+        await Navigation.PushAsync(new CreateGamePage(_api, _prefs));
     }
 
     private async void OnLogoutClicked(object sender, EventArgs e)
@@ -334,7 +331,7 @@ public class MenuPage : ContentPage
             await _api.Logout();
             if (Application.Current?.Windows[0] is Window window)
             {
-                window.Page = new NavigationPage(new MainPage());
+                window.Page = new NavigationPage(new MainPage(_api, _prefs));
             }
         }
     }

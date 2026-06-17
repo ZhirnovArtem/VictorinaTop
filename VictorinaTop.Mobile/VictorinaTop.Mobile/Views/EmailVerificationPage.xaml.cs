@@ -14,10 +14,10 @@ public class EmailVerificationPage : ContentPage
     private readonly string _login;
     private readonly string _password;
 
-    public EmailVerificationPage(string email, string login, string password)
+    public EmailVerificationPage(string email, string login, string password, ApiService api, PreferencesService prefs)
     {
-        _prefs = new PreferencesService();
-        _api = new ApiService(_prefs);
+        _prefs = prefs;
+        _api = api;
         _email = email;
         _login = login;
         _password = password;
@@ -141,7 +141,7 @@ public class EmailVerificationPage : ContentPage
 
         if (success)
         {
-            await Navigation.PushAsync(new MenuPage());
+            await Navigation.PushAsync(new MenuPage(_api, _prefs));
         }
         else
         {

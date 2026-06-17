@@ -9,10 +9,10 @@ public class ErrorPage : ContentPage
     private readonly Label _errorMessageLabel;
     private Button _retryBtn;
 
-    public ErrorPage(string errorMessage = null)
+    public ErrorPage(ApiService api, PreferencesService prefs, string errorMessage = null)
     {
-        _prefs = new PreferencesService();
-        _api = new ApiService(_prefs);
+        _prefs = prefs;
+        _api = api;
 
         BackgroundColor = Color.FromArgb("#1A1A2E");
         NavigationPage.SetHasBackButton(this, false);
@@ -118,7 +118,7 @@ public class ErrorPage : ContentPage
 
             if (!string.IsNullOrEmpty(savedToken))
             {
-                await Navigation.PushAsync(new MenuPage());
+                await Navigation.PushAsync(new MenuPage(_api, _prefs));
             }
             else
             {
@@ -151,7 +151,7 @@ public class ErrorPage : ContentPage
 
             if (result)
             {
-                await Navigation.PushAsync(new MenuPage());
+                await Navigation.PushAsync(new MenuPage(_api, _prefs));
             }
         }
         else

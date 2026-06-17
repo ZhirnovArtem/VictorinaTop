@@ -59,7 +59,6 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseMiddleware<ErrorHandlingMiddleware>();
-app.UseHttpsRedirection();
 app.UseCors("MobileApp");
 app.UseAuthentication();
 app.UseAuthorization();

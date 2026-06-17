@@ -43,8 +43,8 @@ public class ApiService
         {
             _http.DefaultRequestHeaders.Authorization =
                 new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+            _tokenLoaded = true; 
         }
-        _tokenLoaded = true;
     }
 
     public async Task<(bool success, string error, bool requiresVerification)>
@@ -167,8 +167,13 @@ public class ApiService
     {
         try
         {
+            await EnsureTokenLoaded(); 
             var response = await _http.PostAsJsonAsync("themes", new { name });
-
+#if DEBUG
+            Console.WriteLine($"[CreateTheme] Status: {response.StatusCode}");
+            var body = await response.Content.ReadAsStringAsync();
+            Console.WriteLine($"[CreateTheme] Body: {body}");
+#endif
             if (response.IsSuccessStatusCode)
             {
                 var result = await response.Content.ReadFromJsonAsync<CreateThemeResponse>();
@@ -182,16 +187,11 @@ public class ApiService
         }
     }
 
-    private class CreateThemeResponse
-    {
-        public int id { get; set; }
-        public string name { get; set; } = string.Empty;
-    }
-
     public async Task<bool> AddQuestion(int themeId, Question question)
     {
         try
         {
+            await EnsureTokenLoaded();
             var request = new
             {
                 themeId,
@@ -212,6 +212,11 @@ public class ApiService
         }
     }
 
+    private class CreateThemeResponse
+    {
+        public int id { get; set; }
+        public string name { get; set; } = string.Empty;
+    }
     public async Task<bool> SubmitScore(int themeId, int points)
     {
         try
@@ -233,18 +238,20 @@ public class ApiService
     {
         try
         {
+            Console.WriteLine($"[GetLeaderboard] start, tokenLoaded={_tokenLoaded}");
             await EnsureTokenLoaded();
-            return await _http.GetFromJsonAsync<List<User>>($"scores/leaderboard?limit={limit}") ?? new List<User>();
+            Console.WriteLine($"[GetLeaderboard] token loaded, requesting...");
+            var raw = await _http.GetStringAsync($"scores/leaderboard?limit={limit}");
+            Console.WriteLine($"[GetLeaderboard] raw: {raw}");
+            var options = new System.Text.Json.JsonSerializerOptions { PropertyNameCaseInsensitive = true };
+            return System.Text.Json.JsonSerializer.Deserialize<List<User>>(raw, options) ?? new List<User>();
         }
         catch (Exception ex)
         {
-#if DEBUG
-            Console.WriteLine($"[ApiService.GetLeaderboard] {ex.Message}");
-#endif
+            Console.WriteLine($"[ApiService.GetLeaderboard] EXCEPTION: {ex.GetType().Name}: {ex.Message}");
             return new List<User>();
         }
     }
-
     public async Task<bool> TestConnection()
     {
         try

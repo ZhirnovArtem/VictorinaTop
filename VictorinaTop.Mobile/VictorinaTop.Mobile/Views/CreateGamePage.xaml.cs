@@ -18,11 +18,10 @@ public class CreateGamePage : ContentPage
     private Label _messageLabel;
     private Button _addQuestionBtn, _saveQuizBtn;
 
-    public CreateGamePage()
+    public CreateGamePage(ApiService api, PreferencesService prefs)
     {
-        _prefs = new PreferencesService();
-        _api = new ApiService(_prefs);
-
+        _prefs = prefs;
+        _api = api;
         Title = "Создание викторины";
         BackgroundColor = Color.FromArgb("#1A1A2E");
 

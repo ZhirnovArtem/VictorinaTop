@@ -12,10 +12,10 @@ public class RegistrationPage : ContentPage
     private readonly ApiService _api;
     private readonly PreferencesService _prefs;
 
-    public RegistrationPage()
+    public RegistrationPage(ApiService api, PreferencesService prefs)
     {
-        _prefs = new PreferencesService();
-        _api = new ApiService(_prefs);
+        _prefs = prefs;
+        _api = api;
 
         var backButton = new Button
         {
@@ -154,7 +154,7 @@ public class RegistrationPage : ContentPage
 
         if (success && requiresVerification)
         {
-            await Navigation.PushAsync(new EmailVerificationPage(email, login, password));
+            await Navigation.PushAsync(new EmailVerificationPage(email, login, password, _api, _prefs));
         }
         else
         {

@@ -11,11 +11,10 @@ public class EnteringPage : ContentPage
     private readonly ApiService _api;
     private readonly PreferencesService _prefs;
 
-    public EnteringPage()
+    public EnteringPage(ApiService api, PreferencesService prefs)
     {
-        _prefs = new PreferencesService();
-        _api = new ApiService(_prefs);
-
+        _prefs = prefs;
+        _api = api;
         var backButton = new Button
         {
             Text = "← Назад",
@@ -137,7 +136,7 @@ public class EnteringPage : ContentPage
 
         if (success)
         {
-            await Navigation.PushAsync(new MenuPage());
+            await Navigation.PushAsync(new MenuPage(_api,_prefs));
         }
         else
         {

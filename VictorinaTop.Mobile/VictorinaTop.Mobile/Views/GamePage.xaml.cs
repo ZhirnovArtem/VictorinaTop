@@ -20,10 +20,10 @@ public class GamePage : ContentPage
     private Frame _gameOverPanel;
     private Label _finalScoreLabel;
 
-    public GamePage(string themeName, List<Question> questions, int themeId)
+    public GamePage(string themeName, List<Question> questions, int themeId, ApiService api, PreferencesService prefs)
     {
-        _prefs = new PreferencesService();
-        _api = new ApiService(_prefs);
+        _prefs = prefs;
+        _api = api;
         _themeName = themeName;
         _themeId = themeId;
         _questions = questions;
@@ -172,6 +172,8 @@ public class GamePage : ContentPage
         {
             BackgroundColor = Color.FromArgb("#CC000000"),
             IsVisible = false,
+            VerticalOptions = LayoutOptions.Fill,   
+            HorizontalOptions = LayoutOptions.Fill,
             Content = gameOverLayout
         };
 
@@ -218,6 +220,7 @@ public class GamePage : ContentPage
         if (answer == correct)
         {
             _score += 10;
+            _scoreLabel.Text = $"Счёт: {_score}";  
             await DisplayAlert("✅", "Правильно! +10 очков", "Далее");
         }
         else
@@ -240,9 +243,10 @@ public class GamePage : ContentPage
 
         _finalScoreLabel.Text = $"Ваш счёт: {_score}\n{medal}";
 
-        await _api.SubmitScore(_themeId, _score);
+        Console.WriteLine($"[EndGame] Submitting score: themeId={_themeId}, points={_score}");
+        var result = await _api.SubmitScore(_themeId, _score);
+        Console.WriteLine($"[EndGame] SubmitScore result: {result}");
     }
-
     private async void OnMenuClicked(object sender, EventArgs e)
     {
         await Navigation.PopAsync();

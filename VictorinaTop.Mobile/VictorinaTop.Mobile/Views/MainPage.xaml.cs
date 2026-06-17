@@ -1,5 +1,4 @@
 ﻿using VictorinaTop.Mobile.Services;
-using VictorinaTop.Mobile.Views;
 
 namespace VictorinaTop.Mobile.Views;
 
@@ -8,11 +7,10 @@ public partial class MainPage : ContentPage
     private readonly ApiService _api;
     private readonly PreferencesService _prefs;
 
-    public MainPage()
+    public MainPage(ApiService api, PreferencesService prefs)
     {
-        _prefs = new PreferencesService();
-        _api = new ApiService(_prefs);
-
+        _api = api;
+        _prefs = prefs;
         BuildUI();
     }
 
@@ -74,11 +72,11 @@ public partial class MainPage : ContentPage
 
     private async void OnLoginClicked(object sender, EventArgs e)
     {
-        await Navigation.PushAsync(new EnteringPage());
+        await Navigation.PushAsync(new EnteringPage(_api, _prefs));
     }
 
     private async void OnRegisterClicked(object sender, EventArgs e)
     {
-        await Navigation.PushAsync(new RegistrationPage());
+        await Navigation.PushAsync(new RegistrationPage(_api, _prefs));
     }
 }
