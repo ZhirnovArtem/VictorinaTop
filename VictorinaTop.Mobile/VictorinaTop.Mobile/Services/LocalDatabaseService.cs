@@ -29,7 +29,7 @@ public class LocalDatabaseService
 
         string createQuestions = @"
             CREATE TABLE IF NOT EXISTS Questions (
-                Id INTEGER PRIMARY KEY,
+                Id INTEGER NOT NULL,
                 ThemeId INTEGER NOT NULL,
                 Text TEXT NOT NULL,
                 OptionA TEXT NOT NULL,
@@ -37,7 +37,8 @@ public class LocalDatabaseService
                 OptionC TEXT NOT NULL,
                 OptionD TEXT NOT NULL,
                 CorrectAnswer TEXT NOT NULL,
-                Status TEXT NOT NULL
+                Status TEXT NOT NULL,
+                PRIMARY KEY (Id, ThemeId)
             )";
         new SqliteCommand(createQuestions, connection).ExecuteNonQuery();
     }
@@ -47,19 +48,23 @@ public class LocalDatabaseService
         using var connection = new SqliteConnection($"Data Source={_dbPath}");
         connection.Open();
 
-        new SqliteCommand("DELETE FROM Themes", connection).ExecuteNonQuery();
+        using var transaction = connection.BeginTransaction();
+
+        new SqliteCommand("DELETE FROM Themes", connection, transaction).ExecuteNonQuery();
 
         foreach (var theme in themes)
         {
             var cmd = new SqliteCommand(
                 "INSERT INTO Themes (Id, Name, Author, CachedAt) VALUES (@id, @name, @author, @cached)",
-                connection);
+                connection, transaction);
             cmd.Parameters.AddWithValue("@id", theme.Id);
             cmd.Parameters.AddWithValue("@name", theme.Name);
             cmd.Parameters.AddWithValue("@author", theme.Author);
             cmd.Parameters.AddWithValue("@cached", DateTime.Now.ToString("o"));
             cmd.ExecuteNonQuery();
         }
+
+        transaction.Commit();
     }
 
     public List<Theme> GetCachedThemes()
@@ -69,7 +74,7 @@ public class LocalDatabaseService
         using var connection = new SqliteConnection($"Data Source={_dbPath}");
         connection.Open();
 
-        var reader = new SqliteCommand("SELECT Id, Name, Author FROM Themes", connection).ExecuteReader();
+        using var reader = new SqliteCommand("SELECT Id, Name, Author FROM Themes", connection).ExecuteReader();
         while (reader.Read())
         {
             themes.Add(new Theme
@@ -79,6 +84,7 @@ public class LocalDatabaseService
                 Author = reader.GetString(2)
             });
         }
+
         return themes;
     }
 
@@ -87,16 +93,20 @@ public class LocalDatabaseService
         using var connection = new SqliteConnection($"Data Source={_dbPath}");
         connection.Open();
 
-        var deleteCmd = new SqliteCommand("DELETE FROM Questions WHERE ThemeId = @themeId", connection);
+        using var transaction = connection.BeginTransaction();
+
+        var deleteCmd = new SqliteCommand(
+            "DELETE FROM Questions WHERE ThemeId = @themeId",
+            connection, transaction);
         deleteCmd.Parameters.AddWithValue("@themeId", themeId);
         deleteCmd.ExecuteNonQuery();
 
         foreach (var q in questions)
         {
             var cmd = new SqliteCommand(
-                @"INSERT INTO Questions (Id, ThemeId, Text, OptionA, OptionB, OptionC, OptionD, CorrectAnswer, Status) 
+                @"INSERT INTO Questions (Id, ThemeId, Text, OptionA, OptionB, OptionC, OptionD, CorrectAnswer, Status)
                   VALUES (@id, @themeId, @text, @a, @b, @c, @d, @correct, @status)",
-                connection);
+                connection, transaction);
             cmd.Parameters.AddWithValue("@id", q.Id);
             cmd.Parameters.AddWithValue("@themeId", themeId);
             cmd.Parameters.AddWithValue("@text", q.Text);
@@ -108,6 +118,8 @@ public class LocalDatabaseService
             cmd.Parameters.AddWithValue("@status", q.Status);
             cmd.ExecuteNonQuery();
         }
+
+        transaction.Commit();
     }
 
     public List<Question> GetCachedQuestions(int themeId)
@@ -117,10 +129,12 @@ public class LocalDatabaseService
         using var connection = new SqliteConnection($"Data Source={_dbPath}");
         connection.Open();
 
-        var cmd = new SqliteCommand("SELECT * FROM Questions WHERE ThemeId = @themeId", connection);
+        var cmd = new SqliteCommand(
+            "SELECT Id, ThemeId, Text, OptionA, OptionB, OptionC, OptionD, CorrectAnswer, Status FROM Questions WHERE ThemeId = @themeId",
+            connection);
         cmd.Parameters.AddWithValue("@themeId", themeId);
-        var reader = cmd.ExecuteReader();
 
+        using var reader = cmd.ExecuteReader();
         while (reader.Read())
         {
             questions.Add(new Question
@@ -135,6 +149,7 @@ public class LocalDatabaseService
                 Status = reader.GetString(8)
             });
         }
+
         return questions;
     }
 }
